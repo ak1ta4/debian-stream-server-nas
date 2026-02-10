@@ -7,7 +7,7 @@ Documentación completa de mi servidor Debian 13 (Trixie) con streaming, dashboa
 - **Sistema**: Debian GNU/Linux 13 (Trixie)
 - **Kernel**: 6.12.63+deb13-amd64
 - **Hardware**: Ryzen 5 5600H (6C/12T)
-- **GPUs**: AMD Radeon Vega + NVIDIA RTX 3050 Mobile
+- **GPUs**: AMD Radeon Vega + NVIDIA RTX 3050 
 - **RAM**: 15GB
 - **Almacenamiento**: 476GB NVMe + 223GB SSD + 111GB SSD
 
