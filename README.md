@@ -10,9 +10,9 @@ Documentación completa y configuraciones de mi servidor Debian 13 (Trixie) con 
 
 - **Sistema**: Debian GNU/Linux 13 (Trixie)
 - **Kernel**: 6.12.63+deb13-amd64
-- **Hardware**: HP Victus 16 - Ryzen 5 5600H (6C/12T)
+- **Hardware**: Ryzen 5 5600H (6C/12T)
 - **RAM**: 15GB DDR4
-- **GPUs**: NVIDIA RTX 3050 Mobile + AMD Radeon Vega
+- **GPUs**: NVIDIA RTX 3050 + AMD Radeon Vega
 - **Almacenamiento**: 476GB NVMe + 223GB SSD + 111GB SSD
 
 ## 🎯 Servicios
