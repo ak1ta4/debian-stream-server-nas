@@ -1,0 +1,26 @@
+# Archivos sensibles
+configs/sunshine/credentials/*
+*.key
+*.pem
+*.crt
+private/
+
+# Logs
+*.log
+logs/
+
+# Snapshots temporales
+hardware/snapshots/*
+!hardware/snapshots/.gitkeep
+
+# Sistema
+.DS_Store
+Thumbs.db
+*~
+.vscode/
+.idea/
+
+# Archivos grandes
+*.tar
+*.tar.gz
+*.zip

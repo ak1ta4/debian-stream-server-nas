@@ -1,0 +1,2 @@
+ii  sunshine                              2025.924.154138                      amd64        Self-hosted game stream host for Moonlight
+/usr/bin/sunshine

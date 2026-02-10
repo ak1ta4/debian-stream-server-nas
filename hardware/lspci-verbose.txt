@@ -1,0 +1,237 @@
+00:00.0 Host bridge: Advanced Micro Devices, Inc. [AMD] Renoir/Cezanne Root Complex
+	Subsystem: Hewlett-Packard Company Device 88ec
+	Flags: fast devsel
+
+00:00.2 IOMMU: Advanced Micro Devices, Inc. [AMD] Renoir/Cezanne IOMMU
+	Subsystem: Hewlett-Packard Company Device 88ec
+	Flags: bus master, fast devsel, latency 0, IRQ 255
+	Capabilities: <access denied>
+
+00:01.0 Host bridge: Advanced Micro Devices, Inc. [AMD] Renoir PCIe Dummy Host Bridge
+	Flags: fast devsel, IOMMU group 0
+
+00:01.1 PCI bridge: Advanced Micro Devices, Inc. [AMD] Renoir PCIe GPP Bridge (prog-if 00 [Normal decode])
+	Subsystem: Advanced Micro Devices, Inc. [AMD] Device 1453
+	Flags: bus master, fast devsel, latency 0, IRQ 28, IOMMU group 1
+	Bus: primary=00, secondary=01, subordinate=01, sec-latency=0
+	I/O behind bridge: f000-ffff [size=4K] [16-bit]
+	Memory behind bridge: fb000000-fc0fffff [size=17M] [32-bit]
+	Prefetchable memory behind bridge: fe00000000-ff01ffffff [size=4128M] [32-bit]
+	Capabilities: <access denied>
+	Kernel driver in use: pcieport
+
+00:01.2 PCI bridge: Advanced Micro Devices, Inc. [AMD] Renoir/Cezanne PCIe GPP Bridge (prog-if 00 [Normal decode])
+	Subsystem: Advanced Micro Devices, Inc. [AMD] Device 1453
+	Flags: bus master, fast devsel, latency 0, IRQ 29, IOMMU group 2
+	Bus: primary=00, secondary=02, subordinate=02, sec-latency=0
+	I/O behind bridge: e000-efff [size=4K] [16-bit]
+	Memory behind bridge: fc900000-fc9fffff [size=1M] [32-bit]
+	Prefetchable memory behind bridge: [disabled] [64-bit]
+	Capabilities: <access denied>
+	Kernel driver in use: pcieport
+
+00:02.0 Host bridge: Advanced Micro Devices, Inc. [AMD] Renoir PCIe Dummy Host Bridge
+	Flags: fast devsel, IOMMU group 3
+
+00:02.1 PCI bridge: Advanced Micro Devices, Inc. [AMD] Renoir/Cezanne PCIe GPP Bridge (prog-if 00 [Normal decode])
+	Subsystem: Advanced Micro Devices, Inc. [AMD] Device 1453
+	Flags: bus master, fast devsel, latency 0, IRQ 30, IOMMU group 4
+	Bus: primary=00, secondary=03, subordinate=03, sec-latency=0
+	I/O behind bridge: d000-dfff [size=4K] [16-bit]
+	Memory behind bridge: fc800000-fc8fffff [size=1M] [32-bit]
+	Prefetchable memory behind bridge: [disabled] [64-bit]
+	Capabilities: <access denied>
+	Kernel driver in use: pcieport
+
+00:02.2 PCI bridge: Advanced Micro Devices, Inc. [AMD] Renoir/Cezanne PCIe GPP Bridge (prog-if 00 [Normal decode])
+	Subsystem: Advanced Micro Devices, Inc. [AMD] Device 1453
+	Flags: bus master, fast devsel, latency 0, IRQ 31, IOMMU group 5
+	Bus: primary=00, secondary=04, subordinate=04, sec-latency=0
+	I/O behind bridge: [disabled] [32-bit]
+	Memory behind bridge: fc700000-fc7fffff [size=1M] [32-bit]
+	Prefetchable memory behind bridge: [disabled] [64-bit]
+	Capabilities: <access denied>
+	Kernel driver in use: pcieport
+
+00:02.3 PCI bridge: Advanced Micro Devices, Inc. [AMD] Renoir/Cezanne PCIe GPP Bridge (prog-if 00 [Normal decode])
+	Subsystem: Advanced Micro Devices, Inc. [AMD] Device 1453
+	Flags: bus master, fast devsel, latency 0, IRQ 32, IOMMU group 6
+	Bus: primary=00, secondary=05, subordinate=05, sec-latency=0
+	I/O behind bridge: [disabled] [32-bit]
+	Memory behind bridge: fc600000-fc6fffff [size=1M] [32-bit]
+	Prefetchable memory behind bridge: [disabled] [64-bit]
+	Capabilities: <access denied>
+	Kernel driver in use: pcieport
+
+00:08.0 Host bridge: Advanced Micro Devices, Inc. [AMD] Renoir PCIe Dummy Host Bridge
+	Flags: fast devsel, IOMMU group 7
+
+00:08.1 PCI bridge: Advanced Micro Devices, Inc. [AMD] Renoir Internal PCIe GPP Bridge to Bus (prog-if 00 [Normal decode])
+	Subsystem: Advanced Micro Devices, Inc. [AMD] Renoir Internal PCIe GPP Bridge to Bus
+	Flags: bus master, fast devsel, latency 0, IRQ 33, IOMMU group 8
+	Bus: primary=00, secondary=06, subordinate=06, sec-latency=0
+	I/O behind bridge: c000-cfff [size=4K] [16-bit]
+	Memory behind bridge: fc200000-fc5fffff [size=4M] [32-bit]
+	Prefetchable memory behind bridge: d0000000-e01fffff [size=258M] [32-bit]
+	Capabilities: <access denied>
+	Kernel driver in use: pcieport
+
+00:14.0 SMBus: Advanced Micro Devices, Inc. [AMD] FCH SMBus Controller (rev 51)
+	Subsystem: Advanced Micro Devices, Inc. [AMD] FCH SMBus Controller
+	Flags: 66MHz, medium devsel, IOMMU group 9
+	Kernel driver in use: piix4_smbus
+	Kernel modules: i2c_piix4, sp5100_tco
+
+00:14.3 ISA bridge: Advanced Micro Devices, Inc. [AMD] FCH LPC Bridge (rev 51)
+	Subsystem: Advanced Micro Devices, Inc. [AMD] FCH LPC Bridge
+	Flags: bus master, 66MHz, medium devsel, latency 0, IOMMU group 9
+
+00:18.0 Host bridge: Advanced Micro Devices, Inc. [AMD] Cezanne Data Fabric; Function 0
+	Flags: fast devsel, IOMMU group 10
+
+00:18.1 Host bridge: Advanced Micro Devices, Inc. [AMD] Cezanne Data Fabric; Function 1
+	Flags: fast devsel, IOMMU group 10
+
+00:18.2 Host bridge: Advanced Micro Devices, Inc. [AMD] Cezanne Data Fabric; Function 2
+	Flags: fast devsel, IOMMU group 10
+
+00:18.3 Host bridge: Advanced Micro Devices, Inc. [AMD] Cezanne Data Fabric; Function 3
+	Flags: fast devsel, IOMMU group 10
+	Kernel driver in use: k10temp
+	Kernel modules: k10temp
+
+00:18.4 Host bridge: Advanced Micro Devices, Inc. [AMD] Cezanne Data Fabric; Function 4
+	Flags: fast devsel, IOMMU group 10
+
+00:18.5 Host bridge: Advanced Micro Devices, Inc. [AMD] Cezanne Data Fabric; Function 5
+	Flags: fast devsel, IOMMU group 10
+
+00:18.6 Host bridge: Advanced Micro Devices, Inc. [AMD] Cezanne Data Fabric; Function 6
+	Flags: fast devsel, IOMMU group 10
+
+00:18.7 Host bridge: Advanced Micro Devices, Inc. [AMD] Cezanne Data Fabric; Function 7
+	Flags: fast devsel, IOMMU group 10
+
+01:00.0 VGA compatible controller: NVIDIA Corporation GA107M [GeForce RTX 3050 Mobile] (rev a1) (prog-if 00 [VGA controller])
+	DeviceName: NVIDIA Graphics Device
+	Subsystem: Hewlett-Packard Company Device 88ec
+	Physical Slot: 0
+	Flags: bus master, fast devsel, latency 0, IRQ 72, IOMMU group 11
+	Memory at fb000000 (32-bit, non-prefetchable) [size=16M]
+	Memory at fe00000000 (64-bit, prefetchable) [size=4G]
+	Memory at ff00000000 (64-bit, prefetchable) [size=32M]
+	I/O ports at f000 [size=128]
+	Expansion ROM at fc000000 [disabled] [size=512K]
+	Capabilities: <access denied>
+	Kernel driver in use: nouveau
+	Kernel modules: nouveau
+
+01:00.1 Audio device: NVIDIA Corporation GA107 High Definition Audio Controller (rev a1)
+	Subsystem: Hewlett-Packard Company Device 88ec
+	Physical Slot: 0
+	Flags: bus master, fast devsel, latency 0, IRQ 79, IOMMU group 11
+	Memory at fc080000 (32-bit, non-prefetchable) [size=16K]
+	Capabilities: <access denied>
+	Kernel driver in use: snd_hda_intel
+	Kernel modules: snd_hda_intel
+
+02:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8111/8168/8211/8411 PCI Express Gigabit Ethernet Controller (rev 16)
+	DeviceName: OnBoard Enthernets
+	Subsystem: Hewlett-Packard Company Device 88ec
+	Flags: bus master, fast devsel, latency 0, IRQ 34, IOMMU group 12
+	I/O ports at e000 [size=256]
+	Memory at fc904000 (64-bit, non-prefetchable) [size=4K]
+	Memory at fc900000 (64-bit, non-prefetchable) [size=16K]
+	Capabilities: <access denied>
+	Kernel driver in use: r8169
+	Kernel modules: r8169
+
+03:00.0 Network controller: Realtek Semiconductor Co., Ltd. RTL8852AE 802.11ax PCIe Wireless Network Adapter
+	DeviceName: Realtek Wireless LAN + BT
+	Subsystem: Hewlett-Packard Company Device 88e1
+	Flags: bus master, fast devsel, latency 0, IRQ 82, IOMMU group 13
+	I/O ports at d000 [size=256]
+	Memory at fc800000 (64-bit, non-prefetchable) [size=1M]
+	Capabilities: <access denied>
+	Kernel driver in use: rtw89_8852ae
+	Kernel modules: rtw89_8852ae
+
+04:00.0 SD Host controller: Genesys Logic, Inc GL9750 SD Host Controller (rev 01) (prog-if 01)
+	DeviceName: Realtek PCIE CardReader
+	Subsystem: Hewlett-Packard Company Device 88ec
+	Flags: bus master, fast devsel, latency 0, IRQ 51, IOMMU group 14
+	Memory at fc700000 (32-bit, non-prefetchable) [size=4K]
+	Capabilities: <access denied>
+	Kernel driver in use: sdhci-pci
+	Kernel modules: sdhci_pci
+
+05:00.0 Non-Volatile memory controller: Sandisk Corp SanDisk Extreme Pro / WD Black SN750 / PC SN730 / Red SN700 NVMe SSD (prog-if 02 [NVM Express])
+	Subsystem: Sandisk Corp SanDisk Extreme Pro / WD Black SN750 / PC SN730 / Red SN700 NVMe SSD
+	Flags: bus master, fast devsel, latency 0, IRQ 35, IOMMU group 15
+	Memory at fc600000 (64-bit, non-prefetchable) [size=16K]
+	Memory at fc604000 (64-bit, non-prefetchable) [size=256]
+	Capabilities: <access denied>
+	Kernel driver in use: nvme
+	Kernel modules: nvme
+
+06:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Cezanne [Radeon Vega Series / Radeon Vega Mobile Series] (rev c6) (prog-if 00 [VGA controller])
+	DeviceName:  Onboard IGD
+	Subsystem: Hewlett-Packard Company Device 88ec
+	Flags: bus master, fast devsel, latency 0, IRQ 61, IOMMU group 16
+	Memory at d0000000 (64-bit, prefetchable) [size=256M]
+	Memory at e0000000 (64-bit, prefetchable) [size=2M]
+	I/O ports at c000 [size=256]
+	Memory at fc500000 (32-bit, non-prefetchable) [size=512K]
+	Capabilities: <access denied>
+	Kernel driver in use: amdgpu
+	Kernel modules: amdgpu
+
+06:00.1 Audio device: Advanced Micro Devices, Inc. [AMD/ATI] Renoir Radeon High Definition Audio Controller
+	Subsystem: Hewlett-Packard Company Device 88ec
+	Flags: bus master, fast devsel, latency 0, IRQ 80, IOMMU group 17
+	Memory at fc5c8000 (32-bit, non-prefetchable) [size=16K]
+	Capabilities: <access denied>
+	Kernel driver in use: snd_hda_intel
+	Kernel modules: snd_hda_intel
+
+06:00.2 Encryption controller: Advanced Micro Devices, Inc. [AMD] Family 17h (Models 10h-1fh) Platform Security Processor
+	Subsystem: Hewlett-Packard Company Device 88ec
+	Flags: bus master, fast devsel, latency 0, IRQ 74, IOMMU group 18
+	Memory at fc400000 (32-bit, non-prefetchable) [size=1M]
+	Memory at fc5cc000 (32-bit, non-prefetchable) [size=8K]
+	Capabilities: <access denied>
+	Kernel driver in use: ccp
+	Kernel modules: ccp
+
+06:00.3 USB controller: Advanced Micro Devices, Inc. [AMD] Renoir/Cezanne USB 3.1 (prog-if 30 [XHCI])
+	Subsystem: Hewlett-Packard Company Device 88ec
+	Flags: bus master, fast devsel, latency 0, IRQ 52, IOMMU group 19
+	Memory at fc300000 (64-bit, non-prefetchable) [size=1M]
+	Capabilities: <access denied>
+	Kernel driver in use: xhci_hcd
+	Kernel modules: xhci_pci
+
+06:00.4 USB controller: Advanced Micro Devices, Inc. [AMD] Renoir/Cezanne USB 3.1 (prog-if 30 [XHCI])
+	Subsystem: Hewlett-Packard Company Device 88ec
+	Flags: bus master, fast devsel, latency 0, IRQ 61, IOMMU group 20
+	Memory at fc200000 (64-bit, non-prefetchable) [size=1M]
+	Capabilities: <access denied>
+	Kernel driver in use: xhci_hcd
+	Kernel modules: xhci_pci
+
+06:00.5 Multimedia controller: Advanced Micro Devices, Inc. [AMD] Audio Coprocessor (rev 01)
+	Subsystem: Hewlett-Packard Company Device 88ec
+	Flags: bus master, fast devsel, latency 0, IRQ 78, IOMMU group 21
+	Memory at fc580000 (32-bit, non-prefetchable) [size=256K]
+	Capabilities: <access denied>
+	Kernel driver in use: snd_rn_pci_acp3x
+	Kernel modules: snd_pci_acp3x, snd_rn_pci_acp3x, snd_pci_acp5x, snd_pci_acp6x, snd_acp_pci, snd_rpl_pci_acp6x, snd_pci_ps, snd_sof_amd_rembrandt
+
+06:00.6 Audio device: Advanced Micro Devices, Inc. [AMD] Family 17h/19h/1ah HD Audio Controller
+	Subsystem: Hewlett-Packard Company Device 88ec
+	Flags: bus master, fast devsel, latency 0, IRQ 81, IOMMU group 22
+	Memory at fc5c0000 (32-bit, non-prefetchable) [size=32K]
+	Capabilities: <access denied>
+	Kernel driver in use: snd_hda_intel
+	Kernel modules: snd_hda_intel
+

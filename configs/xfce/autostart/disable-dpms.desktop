@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Disable DPMS
+Exec=sh -c 'xset s off; xset -dpms; xset s noblank'
+OnlyShowIn=XFCE;
+X-GNOME-Autostart-enabled=true

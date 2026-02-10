@@ -1,0 +1,281 @@
+[
+    {
+        "Id": "fafef002162f3c63d2cc2d6eba041d7a9e36dbc759cb4bf0a1370ada99175e79",
+        "Created": "2026-02-06T18:05:46.829788627Z",
+        "Path": "/bin/sh",
+        "Args": [
+            "-c",
+            "/venv/bin/python3 -m glances ${GLANCES_OPT}"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 3044,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-02-06T18:05:47.061622269Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:70bbfe8a6437c7e099ec213f17e5fe89256ff9e7545379cffaf77b056a621a86",
+        "ResolvConfPath": "/var/lib/docker/containers/fafef002162f3c63d2cc2d6eba041d7a9e36dbc759cb4bf0a1370ada99175e79/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/fafef002162f3c63d2cc2d6eba041d7a9e36dbc759cb4bf0a1370ada99175e79/hostname",
+        "HostsPath": "/var/lib/docker/containers/fafef002162f3c63d2cc2d6eba041d7a9e36dbc759cb4bf0a1370ada99175e79/hosts",
+        "LogPath": "/var/lib/docker/containers/fafef002162f3c63d2cc2d6eba041d7a9e36dbc759cb4bf0a1370ada99175e79/fafef002162f3c63d2cc2d6eba041d7a9e36dbc759cb4bf0a1370ada99175e79-json.log",
+        "Name": "/glances",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "/etc/os-release:/host/etc/os-release:ro",
+                "/proc:/host/proc:ro",
+                "/sys:/host/sys:ro"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "stack_default",
+            "PortBindings": {
+                "61208/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "61208"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "unless-stopped",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "host",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": [
+                "label=disable"
+            ],
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/baca98cea54c6b4c664b237806612baffe198e47f834a1dabeb90678978d5276-init/diff:/var/lib/docker/overlay2/e29a255353770ae7eda3d80086508b1a6c05acce3a50bef241bcdaacad0b0212/diff:/var/lib/docker/overlay2/6927dc6157ff9506f7d9c4435ba8ea692888648f0f63e166098def85522b3092/diff:/var/lib/docker/overlay2/bde780c1ae2c2d7cc262c9fc6113fa6e33a1135f62b3ccfb1bdab364d389841d/diff:/var/lib/docker/overlay2/28d97ccc45be41b323cd89c5fdf708a0389cc2f9cf041bea4b8f4716b2889973/diff:/var/lib/docker/overlay2/3c96061027fd579d17f4c8459fedce1a37d90d20abb7a49002d7d8e4f91d34b6/diff:/var/lib/docker/overlay2/141411ab668632067cfcfb4583a56fcaea097eec9bbd12e44d8234b111c9a000/diff:/var/lib/docker/overlay2/43bb852da4e5e0a104c202df097f25113702d194bc53463d982b16d9c0145d98/diff:/var/lib/docker/overlay2/c7d1e48ff69be73852b6ca57a0a3498fd5ccf9b6ce72a47ac566b6936e6e6e95/diff:/var/lib/docker/overlay2/173afa257b99fec6ef17fa116257a359420dc8f168edf90fedee78637dfedbcf/diff:/var/lib/docker/overlay2/6fb0319c0779bc9795c602355174dcad0e70b708fba4a38a5d49563e5d8819fb/diff:/var/lib/docker/overlay2/c6cf7586e0ad2f687830cfc3f3a160e5d9eb40641e118efb3e9b709d5798718e/diff",
+                "MergedDir": "/var/lib/docker/overlay2/baca98cea54c6b4c664b237806612baffe198e47f834a1dabeb90678978d5276/merged",
+                "UpperDir": "/var/lib/docker/overlay2/baca98cea54c6b4c664b237806612baffe198e47f834a1dabeb90678978d5276/diff",
+                "WorkDir": "/var/lib/docker/overlay2/baca98cea54c6b4c664b237806612baffe198e47f834a1dabeb90678978d5276/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/etc/os-release",
+                "Destination": "/host/etc/os-release",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/proc",
+                "Destination": "/host/proc",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/sys",
+                "Destination": "/host/sys",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "fafef002162f",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "61208/tcp": {},
+                "61209/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "GLANCES_OPT=-w",
+                "PATH=/venv/bin:/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            ],
+            "Cmd": [
+                "/bin/sh",
+                "-c",
+                "/venv/bin/python3 -m glances ${GLANCES_OPT}"
+            ],
+            "Image": "nicolargo/glances:latest",
+            "Volumes": null,
+            "WorkingDir": "/app",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": {
+                "com.docker.compose.config-hash": "bd56c343cd3d6b2ce9c75cf9ea78fe34580839df9cca32df85172dc4ec15fffc",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:70bbfe8a6437c7e099ec213f17e5fe89256ff9e7545379cffaf77b056a621a86",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "stack",
+                "com.docker.compose.project.config_files": "/srv/docker/dashboard/stack/compose.yaml",
+                "com.docker.compose.project.working_dir": "/srv/docker/dashboard/stack",
+                "com.docker.compose.service": "glances",
+                "com.docker.compose.version": "2.26.1",
+                "org.opencontainers.image.created": "2025-11-03T13:56:40.995Z",
+                "org.opencontainers.image.description": "Glances an Eye on your system. A top/htop alternative for GNU/Linux, BSD, Mac OS and Windows operating systems.",
+                "org.opencontainers.image.licenses": "NOASSERTION",
+                "org.opencontainers.image.revision": "ff5e33d85693954da88f2df95f809751834ed239",
+                "org.opencontainers.image.source": "https://github.com/nicolargo/glances",
+                "org.opencontainers.image.title": "glances",
+                "org.opencontainers.image.url": "https://nicolargo.github.io/glances/",
+                "org.opencontainers.image.version": "master"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "288c5cdc744a44a3ffd2eee2231fdd84030558d74f6a7fb946962cffeb957624",
+            "SandboxKey": "/var/run/docker/netns/288c5cdc744a",
+            "Ports": {
+                "61208/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "61208"
+                    },
+                    {
+                        "HostIp": "::",
+                        "HostPort": "61208"
+                    }
+                ],
+                "61209/tcp": null
+            },
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "stack_default": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "glances",
+                        "glances"
+                    ],
+                    "MacAddress": "02:42:ac:14:00:02",
+                    "NetworkID": "095822f1416e59cf2459afdebf5e848e472fbf50c18d34fe055ee14d725d20e6",
+                    "EndpointID": "9ee627343a7b312e72c82741493b2ccf95e1e15ae3096e0b04968a33148f8048",
+                    "Gateway": "172.20.0.1",
+                    "IPAddress": "172.20.0.2",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DriverOpts": null,
+                    "DNSNames": [
+                        "glances",
+                        "fafef002162f"
+                    ]
+                }
+            }
+        }
+    }
+]
