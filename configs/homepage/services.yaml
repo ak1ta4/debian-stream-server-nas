@@ -1,0 +1,21 @@
+- Infra:
+    - Homepage:
+        href: http://192.168.1.55:3000
+        description: Dashboard
+        icon: homepage
+    - Glances:
+        href: http://192.168.1.55:61208
+        description: Métricas
+        icon: glances
+
+- Streaming:
+    - Sunshine:
+        href: https://192.168.1.55:47990
+        description: Sunshine UI
+        icon: sunshine
+
+- Storage:
+    - Nextcloud:
+        href: http://192.168.1.55:8080
+        description: Archivos (LAN)
+        icon: nextcloud

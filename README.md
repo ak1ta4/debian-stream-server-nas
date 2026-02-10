@@ -10,9 +10,9 @@ Documentación completa y configuraciones de mi servidor Debian 13 (Trixie) con 
 
 - **Sistema**: Debian GNU/Linux 13 (Trixie)
 - **Kernel**: 6.12.63+deb13-amd64
-- **Hardware**: Ryzen 5 5600H (6C/12T)
+- **Hardware**: HP Victus 16 - Ryzen 5 5600H (6C/12T)
 - **RAM**: 15GB DDR4
-- **GPUs**: NVIDIA RTX 3050 + AMD Radeon Vega
+- **GPUs**: NVIDIA RTX 3050 Mobile + AMD Radeon Vega
 - **Almacenamiento**: 476GB NVMe + 223GB SSD + 111GB SSD
 
 ## 🎯 Servicios
@@ -20,44 +20,56 @@ Documentación completa y configuraciones de mi servidor Debian 13 (Trixie) con 
 - **Streaming**: Sunshine 2025.924
 - **Dashboard**: Homepage (puerto 3000)
 - **Monitoring**: Glances (puerto 61208)
-- **Docker**: Portainer (puerto 9000)
+- **Docker Management**: Portainer (puerto 9000)
 - **SSH**: Puerto 22
+
+## 🐳 Docker Compose
+
+Todos los servicios del dashboard se gestionan con docker-compose:
+```bash
+docker-compose up -d      # Iniciar servicios
+docker-compose logs -f    # Ver logs
+docker-compose ps         # Estado
+```
 
 ## 📁 Estructura
 
+- `docker-compose.yml` - Definición de servicios
 - `docs/` - Documentación completa
   - `setup/` - Guías de instalación
   - `guides/` - Tutoriales y workflows
   - `operations/` - Troubleshooting
   - `architecture/` - Diseño del sistema
 - `configs/` - Configuraciones del servidor
+  - `homepage/` - Config de Homepage dashboard
+  - `sunshine/` - Config de streaming
+  - `docker/` - Inspects de contenedores
+  - `system/` - SSH, systemd, udev
 - `scripts/` - Scripts de automatización
 - `hardware/` - Información de hardware
 
-## 🚀 Uso Rápido
+## 🚀 Inicio Rápido
+
+### Levantar el stack completo
+```bash
+cd ~/debian-server-docs
+docker-compose up -d
+```
 
 ### Actualizar configuraciones después de cambios
 ```bash
-cd ~/debian-server-docs
 ./scripts/backup/update-configs.sh
 git add .
-git commit -m "Descripción del cambio"
+git commit -m "Update configs"
 git push
-```
-
-### Ver documentación
-```bash
-cat docs/guides/workflow.md        # Workflow completo
-cat docs/setup/sunshine-setup.md   # Setup de Sunshine
-cat docs/setup/docker-setup.md     # Setup de Docker
 ```
 
 ## 📖 Documentación Principal
 
-1. **[Workflow de Mantenimiento](docs/guides/workflow.md)** ⭐ - Cómo mantener este repo actualizado
-2. **[Arquitectura](docs/architecture/overview.md)** - Diseño del sistema
-3. **[Sunshine Setup](docs/setup/sunshine-setup.md)** - Configuración de streaming
-4. **[Docker Setup](docs/setup/docker-setup.md)** - Gestión de contenedores
+1. **[Workflow de Mantenimiento](docs/guides/workflow.md)** ⭐ - Cómo mantener este repo
+2. **[Docker Compose Setup](docs/setup/docker-compose-setup.md)** - Gestión de servicios
+3. **[Arquitectura](docs/architecture/overview.md)** - Diseño del sistema
+4. **[Sunshine Setup](docs/setup/sunshine-setup.md)** - Streaming
 5. **[Troubleshooting](docs/operations/troubleshooting.md)** - Solución de problemas
 
 ## 🌐 Acceso
@@ -69,7 +81,7 @@ cat docs/setup/docker-setup.md     # Setup de Docker
 
 ## 🔧 Scripts Disponibles
 
-- `scripts/backup/update-configs.sh` - Actualiza todas las configuraciones
-- `scripts/monitoring/system-inventory.sh` - Genera snapshot del sistema
+- `scripts/backup/update-configs.sh` - Actualiza configuraciones
+- `scripts/monitoring/system-inventory.sh` - Snapshot del sistema
 - `scripts/custom/apply.sh` - Script personalizado
 - `scripts/custom/collect.sh` - Script personalizado

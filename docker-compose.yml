@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    ports:
+      - "3000:3000"
+    volumes:
+      - /srv/docker/dashboard/stack/config:/app/config
+    environment:
+      - HOMEPAGE_ALLOWED_HOSTS=192.168.1.55:3000,localhost:3000,127.0.0.1:3000
+    restart: unless-stopped
+    networks:
+      - dashboard
+
+  glances:
+    image: nicolargo/glances:latest
+    container_name: glances
+    ports:
+      - "61208:61208"
+    volumes:
+      - /etc/os-release:/host/etc/os-release:ro
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+    environment:
+      - GLANCES_OPT=-w
+    restart: unless-stopped
+    pid: host
+    networks:
+      - dashboard
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    ports:
+      - "9000:9000"
+      - "9443:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    restart: unless-stopped
+    networks:
+      - dashboard
+
+networks:
+  dashboard:
+    driver: bridge
+
+volumes:
+  portainer_data:
