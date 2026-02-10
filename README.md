@@ -6,7 +6,7 @@ Documentación completa de mi servidor Debian 13 (Trixie) con streaming, dashboa
 
 - **Sistema**: Debian GNU/Linux 13 (Trixie)
 - **Kernel**: 6.12.63+deb13-amd64
-- **Hardware**: HP Victus 16 - Ryzen 5 5600H (6C/12T)
+- **Hardware**: Ryzen 5 5600H (6C/12T)
 - **GPUs**: AMD Radeon Vega + NVIDIA RTX 3050 Mobile
 - **RAM**: 15GB
 - **Almacenamiento**: 476GB NVMe + 223GB SSD + 111GB SSD
@@ -20,7 +20,7 @@ Documentación completa de mi servidor Debian 13 (Trixie) con streaming, dashboa
 
 ### Sunshine Streaming
 - **Versión**: 2025.924.154138
-- **GPU**: NVIDIA RTX 3050 Mobile + AMD Radeon Vega
+- **GPU**: NVIDIA RTX 3050 + AMD Radeon Vega
 
 ## 📁 Estructura del Repositorio
 
