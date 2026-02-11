@@ -156,6 +156,14 @@
         },
         "Mounts": [
             {
+                "Type": "bind",
+                "Source": "/var/run/docker.sock",
+                "Destination": "/var/run/docker.sock",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
                 "Type": "volume",
                 "Name": "dashboard_portainer_data",
                 "Source": "/var/lib/docker/volumes/dashboard_portainer_data/_data",
@@ -164,14 +172,6 @@
                 "Mode": "z",
                 "RW": true,
                 "Propagation": ""
-            },
-            {
-                "Type": "bind",
-                "Source": "/var/run/docker.sock",
-                "Destination": "/var/run/docker.sock",
-                "Mode": "rw",
-                "RW": true,
-                "Propagation": "rprivate"
             }
         ],
         "Config": {
