@@ -150,14 +150,6 @@
         "Mounts": [
             {
                 "Type": "bind",
-                "Source": "/etc/os-release",
-                "Destination": "/host/etc/os-release",
-                "Mode": "ro",
-                "RW": false,
-                "Propagation": "rprivate"
-            },
-            {
-                "Type": "bind",
                 "Source": "/proc",
                 "Destination": "/host/proc",
                 "Mode": "ro",
@@ -168,6 +160,14 @@
                 "Type": "bind",
                 "Source": "/sys",
                 "Destination": "/host/sys",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/etc/os-release",
+                "Destination": "/host/etc/os-release",
                 "Mode": "ro",
                 "RW": false,
                 "Propagation": "rprivate"
