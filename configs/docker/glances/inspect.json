@@ -1,7 +1,7 @@
 [
     {
-        "Id": "fafef002162f3c63d2cc2d6eba041d7a9e36dbc759cb4bf0a1370ada99175e79",
-        "Created": "2026-02-06T18:05:46.829788627Z",
+        "Id": "2848f7f9fefb17a013d916dd53232cb543e3c38030e2cde6779a2d6ddc2347cc",
+        "Created": "2026-02-10T23:09:38.53894823Z",
         "Path": "/bin/sh",
         "Args": [
             "-c",
@@ -14,17 +14,17 @@
             "Restarting": false,
             "OOMKilled": false,
             "Dead": false,
-            "Pid": 3044,
+            "Pid": 695092,
             "ExitCode": 0,
             "Error": "",
-            "StartedAt": "2026-02-06T18:05:47.061622269Z",
+            "StartedAt": "2026-02-10T23:09:38.986304122Z",
             "FinishedAt": "0001-01-01T00:00:00Z"
         },
         "Image": "sha256:70bbfe8a6437c7e099ec213f17e5fe89256ff9e7545379cffaf77b056a621a86",
-        "ResolvConfPath": "/var/lib/docker/containers/fafef002162f3c63d2cc2d6eba041d7a9e36dbc759cb4bf0a1370ada99175e79/resolv.conf",
-        "HostnamePath": "/var/lib/docker/containers/fafef002162f3c63d2cc2d6eba041d7a9e36dbc759cb4bf0a1370ada99175e79/hostname",
-        "HostsPath": "/var/lib/docker/containers/fafef002162f3c63d2cc2d6eba041d7a9e36dbc759cb4bf0a1370ada99175e79/hosts",
-        "LogPath": "/var/lib/docker/containers/fafef002162f3c63d2cc2d6eba041d7a9e36dbc759cb4bf0a1370ada99175e79/fafef002162f3c63d2cc2d6eba041d7a9e36dbc759cb4bf0a1370ada99175e79-json.log",
+        "ResolvConfPath": "/var/lib/docker/containers/2848f7f9fefb17a013d916dd53232cb543e3c38030e2cde6779a2d6ddc2347cc/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/2848f7f9fefb17a013d916dd53232cb543e3c38030e2cde6779a2d6ddc2347cc/hostname",
+        "HostsPath": "/var/lib/docker/containers/2848f7f9fefb17a013d916dd53232cb543e3c38030e2cde6779a2d6ddc2347cc/hosts",
+        "LogPath": "/var/lib/docker/containers/2848f7f9fefb17a013d916dd53232cb543e3c38030e2cde6779a2d6ddc2347cc/2848f7f9fefb17a013d916dd53232cb543e3c38030e2cde6779a2d6ddc2347cc-json.log",
         "Name": "/glances",
         "RestartCount": 0,
         "Driver": "overlay2",
@@ -44,7 +44,7 @@
                 "Type": "json-file",
                 "Config": {}
             },
-            "NetworkMode": "stack_default",
+            "NetworkMode": "dashboard_dashboard",
             "PortBindings": {
                 "61208/tcp": [
                     {
@@ -140,10 +140,10 @@
         },
         "GraphDriver": {
             "Data": {
-                "LowerDir": "/var/lib/docker/overlay2/baca98cea54c6b4c664b237806612baffe198e47f834a1dabeb90678978d5276-init/diff:/var/lib/docker/overlay2/e29a255353770ae7eda3d80086508b1a6c05acce3a50bef241bcdaacad0b0212/diff:/var/lib/docker/overlay2/6927dc6157ff9506f7d9c4435ba8ea692888648f0f63e166098def85522b3092/diff:/var/lib/docker/overlay2/bde780c1ae2c2d7cc262c9fc6113fa6e33a1135f62b3ccfb1bdab364d389841d/diff:/var/lib/docker/overlay2/28d97ccc45be41b323cd89c5fdf708a0389cc2f9cf041bea4b8f4716b2889973/diff:/var/lib/docker/overlay2/3c96061027fd579d17f4c8459fedce1a37d90d20abb7a49002d7d8e4f91d34b6/diff:/var/lib/docker/overlay2/141411ab668632067cfcfb4583a56fcaea097eec9bbd12e44d8234b111c9a000/diff:/var/lib/docker/overlay2/43bb852da4e5e0a104c202df097f25113702d194bc53463d982b16d9c0145d98/diff:/var/lib/docker/overlay2/c7d1e48ff69be73852b6ca57a0a3498fd5ccf9b6ce72a47ac566b6936e6e6e95/diff:/var/lib/docker/overlay2/173afa257b99fec6ef17fa116257a359420dc8f168edf90fedee78637dfedbcf/diff:/var/lib/docker/overlay2/6fb0319c0779bc9795c602355174dcad0e70b708fba4a38a5d49563e5d8819fb/diff:/var/lib/docker/overlay2/c6cf7586e0ad2f687830cfc3f3a160e5d9eb40641e118efb3e9b709d5798718e/diff",
-                "MergedDir": "/var/lib/docker/overlay2/baca98cea54c6b4c664b237806612baffe198e47f834a1dabeb90678978d5276/merged",
-                "UpperDir": "/var/lib/docker/overlay2/baca98cea54c6b4c664b237806612baffe198e47f834a1dabeb90678978d5276/diff",
-                "WorkDir": "/var/lib/docker/overlay2/baca98cea54c6b4c664b237806612baffe198e47f834a1dabeb90678978d5276/work"
+                "LowerDir": "/var/lib/docker/overlay2/deb7d4400399f4f5d9d435b38a7f4006a8b293728c92d5d4871fa9b7f6555d32-init/diff:/var/lib/docker/overlay2/e29a255353770ae7eda3d80086508b1a6c05acce3a50bef241bcdaacad0b0212/diff:/var/lib/docker/overlay2/6927dc6157ff9506f7d9c4435ba8ea692888648f0f63e166098def85522b3092/diff:/var/lib/docker/overlay2/bde780c1ae2c2d7cc262c9fc6113fa6e33a1135f62b3ccfb1bdab364d389841d/diff:/var/lib/docker/overlay2/28d97ccc45be41b323cd89c5fdf708a0389cc2f9cf041bea4b8f4716b2889973/diff:/var/lib/docker/overlay2/3c96061027fd579d17f4c8459fedce1a37d90d20abb7a49002d7d8e4f91d34b6/diff:/var/lib/docker/overlay2/141411ab668632067cfcfb4583a56fcaea097eec9bbd12e44d8234b111c9a000/diff:/var/lib/docker/overlay2/43bb852da4e5e0a104c202df097f25113702d194bc53463d982b16d9c0145d98/diff:/var/lib/docker/overlay2/c7d1e48ff69be73852b6ca57a0a3498fd5ccf9b6ce72a47ac566b6936e6e6e95/diff:/var/lib/docker/overlay2/173afa257b99fec6ef17fa116257a359420dc8f168edf90fedee78637dfedbcf/diff:/var/lib/docker/overlay2/6fb0319c0779bc9795c602355174dcad0e70b708fba4a38a5d49563e5d8819fb/diff:/var/lib/docker/overlay2/c6cf7586e0ad2f687830cfc3f3a160e5d9eb40641e118efb3e9b709d5798718e/diff",
+                "MergedDir": "/var/lib/docker/overlay2/deb7d4400399f4f5d9d435b38a7f4006a8b293728c92d5d4871fa9b7f6555d32/merged",
+                "UpperDir": "/var/lib/docker/overlay2/deb7d4400399f4f5d9d435b38a7f4006a8b293728c92d5d4871fa9b7f6555d32/diff",
+                "WorkDir": "/var/lib/docker/overlay2/deb7d4400399f4f5d9d435b38a7f4006a8b293728c92d5d4871fa9b7f6555d32/work"
             },
             "Name": "overlay2"
         },
@@ -174,7 +174,7 @@
             }
         ],
         "Config": {
-            "Hostname": "fafef002162f",
+            "Hostname": "2848f7f9fefb",
             "Domainname": "",
             "User": "",
             "AttachStdin": false,
@@ -202,14 +202,14 @@
             "Entrypoint": null,
             "OnBuild": null,
             "Labels": {
-                "com.docker.compose.config-hash": "bd56c343cd3d6b2ce9c75cf9ea78fe34580839df9cca32df85172dc4ec15fffc",
+                "com.docker.compose.config-hash": "a4acc7e24957d04db5321a3e1b1acecd56bb18366c177157887e7d3668cd4989",
                 "com.docker.compose.container-number": "1",
                 "com.docker.compose.depends_on": "",
                 "com.docker.compose.image": "sha256:70bbfe8a6437c7e099ec213f17e5fe89256ff9e7545379cffaf77b056a621a86",
                 "com.docker.compose.oneoff": "False",
-                "com.docker.compose.project": "stack",
-                "com.docker.compose.project.config_files": "/srv/docker/dashboard/stack/compose.yaml",
-                "com.docker.compose.project.working_dir": "/srv/docker/dashboard/stack",
+                "com.docker.compose.project": "dashboard",
+                "com.docker.compose.project.config_files": "/srv/docker/dashboard/docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/srv/docker/dashboard",
                 "com.docker.compose.service": "glances",
                 "com.docker.compose.version": "2.26.1",
                 "org.opencontainers.image.created": "2025-11-03T13:56:40.995Z",
@@ -224,8 +224,8 @@
         },
         "NetworkSettings": {
             "Bridge": "",
-            "SandboxID": "288c5cdc744a44a3ffd2eee2231fdd84030558d74f6a7fb946962cffeb957624",
-            "SandboxKey": "/var/run/docker/netns/288c5cdc744a",
+            "SandboxID": "e5687da824b8f8854c8203053c30a2c48c98a58b11db6b034bd4027d8aab1e09",
+            "SandboxKey": "/var/run/docker/netns/e5687da824b8",
             "Ports": {
                 "61208/tcp": [
                     {
@@ -253,18 +253,18 @@
             "IPv6Gateway": "",
             "MacAddress": "",
             "Networks": {
-                "stack_default": {
+                "dashboard_dashboard": {
                     "IPAMConfig": null,
                     "Links": null,
                     "Aliases": [
                         "glances",
                         "glances"
                     ],
-                    "MacAddress": "02:42:ac:14:00:02",
-                    "NetworkID": "095822f1416e59cf2459afdebf5e848e472fbf50c18d34fe055ee14d725d20e6",
-                    "EndpointID": "9ee627343a7b312e72c82741493b2ccf95e1e15ae3096e0b04968a33148f8048",
-                    "Gateway": "172.20.0.1",
-                    "IPAddress": "172.20.0.2",
+                    "MacAddress": "02:42:ac:18:00:04",
+                    "NetworkID": "ac0fb87f69c4d97f0c8da218b29df8c2480d7715c7a1e73e20c4e3afa599ac25",
+                    "EndpointID": "e610ab6637b6849d0b0385683b1db18717b74a0c634b78a4acf2c9964a63099e",
+                    "Gateway": "172.24.0.1",
+                    "IPAddress": "172.24.0.4",
                     "IPPrefixLen": 16,
                     "IPv6Gateway": "",
                     "GlobalIPv6Address": "",
@@ -272,7 +272,7 @@
                     "DriverOpts": null,
                     "DNSNames": [
                         "glances",
-                        "fafef002162f"
+                        "2848f7f9fefb"
                     ]
                 }
             }

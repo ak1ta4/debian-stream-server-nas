@@ -1,7 +1,7 @@
 [
     {
-        "Id": "f8cad916dd1ab534ccfb5a49a0b2c5ac42a3727741f8e1c065c20a6da41c2de9",
-        "Created": "2026-02-06T00:30:23.426049817Z",
+        "Id": "6a49d2dc486d2ef2231b1c3ba9c95bdf80ec733a2429ef9d4ecc96ddaa0074a0",
+        "Created": "2026-02-10T23:09:38.539047516Z",
         "Path": "/portainer",
         "Args": [],
         "State": {
@@ -11,17 +11,17 @@
             "Restarting": false,
             "OOMKilled": false,
             "Dead": false,
-            "Pid": 2794,
+            "Pid": 695137,
             "ExitCode": 0,
             "Error": "",
-            "StartedAt": "2026-02-06T18:05:46.400986633Z",
-            "FinishedAt": "2026-02-06T17:22:43.82211961Z"
+            "StartedAt": "2026-02-10T23:09:39.007607868Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
         },
         "Image": "sha256:2622931a6f420d9c80c84f6b17cce4b0fb5a0d67b23eb2baf44eae774ff5a9ac",
-        "ResolvConfPath": "/var/lib/docker/containers/f8cad916dd1ab534ccfb5a49a0b2c5ac42a3727741f8e1c065c20a6da41c2de9/resolv.conf",
-        "HostnamePath": "/var/lib/docker/containers/f8cad916dd1ab534ccfb5a49a0b2c5ac42a3727741f8e1c065c20a6da41c2de9/hostname",
-        "HostsPath": "/var/lib/docker/containers/f8cad916dd1ab534ccfb5a49a0b2c5ac42a3727741f8e1c065c20a6da41c2de9/hosts",
-        "LogPath": "/var/lib/docker/containers/f8cad916dd1ab534ccfb5a49a0b2c5ac42a3727741f8e1c065c20a6da41c2de9/f8cad916dd1ab534ccfb5a49a0b2c5ac42a3727741f8e1c065c20a6da41c2de9-json.log",
+        "ResolvConfPath": "/var/lib/docker/containers/6a49d2dc486d2ef2231b1c3ba9c95bdf80ec733a2429ef9d4ecc96ddaa0074a0/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/6a49d2dc486d2ef2231b1c3ba9c95bdf80ec733a2429ef9d4ecc96ddaa0074a0/hostname",
+        "HostsPath": "/var/lib/docker/containers/6a49d2dc486d2ef2231b1c3ba9c95bdf80ec733a2429ef9d4ecc96ddaa0074a0/hosts",
+        "LogPath": "/var/lib/docker/containers/6a49d2dc486d2ef2231b1c3ba9c95bdf80ec733a2429ef9d4ecc96ddaa0074a0/6a49d2dc486d2ef2231b1c3ba9c95bdf80ec733a2429ef9d4ecc96ddaa0074a0-json.log",
         "Name": "/portainer",
         "RestartCount": 0,
         "Driver": "overlay2",
@@ -39,12 +39,18 @@
                 "Type": "json-file",
                 "Config": {}
             },
-            "NetworkMode": "portainer_default",
+            "NetworkMode": "dashboard_dashboard",
             "PortBindings": {
                 "9000/tcp": [
                     {
                         "HostIp": "",
                         "HostPort": "9000"
+                    }
+                ],
+                "9443/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "9443"
                     }
                 ]
             },
@@ -62,9 +68,9 @@
             "CapAdd": null,
             "CapDrop": null,
             "CgroupnsMode": "private",
-            "Dns": [],
-            "DnsOptions": [],
-            "DnsSearch": [],
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
             "ExtraHosts": [],
             "GroupAdd": null,
             "IpcMode": "private",
@@ -113,7 +119,7 @@
             "Mounts": [
                 {
                     "Type": "volume",
-                    "Source": "portainer_portainer_data",
+                    "Source": "dashboard_portainer_data",
                     "Target": "/data",
                     "VolumeOptions": {}
                 }
@@ -141,24 +147,14 @@
         },
         "GraphDriver": {
             "Data": {
-                "LowerDir": "/var/lib/docker/overlay2/c86fffee27cc1bb1884fabc290ad0a893b51e7aeeb1dce3b50270a4bdfc4eec2-init/diff:/var/lib/docker/overlay2/8c779dc467dd1e35b0172a9f4cf91d2ab7b92aaa1c14792a687819d97b4ab010/diff:/var/lib/docker/overlay2/e77727f0d2743e6c7c9bf7c7f499a2a5dd36af1f4d638035ab823d74285bfe52/diff:/var/lib/docker/overlay2/56aa85f986e954ccc92990b907ce3cb78f4f0104a5b30bdddd188605d93e5cd7/diff:/var/lib/docker/overlay2/4a86bc74154652725399ba952b3e99edf2eb250798387ee37e6bfb6cc099a895/diff:/var/lib/docker/overlay2/b487467753497a2deee06a721fce22dd350c5d4731de02373976f18d30d19cc0/diff:/var/lib/docker/overlay2/0e401087ef6d774ceda6c0d919c65a5d66855d65f177523a0eecc8244b878d65/diff:/var/lib/docker/overlay2/6e61e566bc57d9de9a72d14a07eb8aa280fac0e0adf5a123fa62ef7db2e10d67/diff:/var/lib/docker/overlay2/46f92f1b6ceadd4a3021d061298245262781b6cecf9e6c4eeecc47e4aecf33b1/diff",
-                "MergedDir": "/var/lib/docker/overlay2/c86fffee27cc1bb1884fabc290ad0a893b51e7aeeb1dce3b50270a4bdfc4eec2/merged",
-                "UpperDir": "/var/lib/docker/overlay2/c86fffee27cc1bb1884fabc290ad0a893b51e7aeeb1dce3b50270a4bdfc4eec2/diff",
-                "WorkDir": "/var/lib/docker/overlay2/c86fffee27cc1bb1884fabc290ad0a893b51e7aeeb1dce3b50270a4bdfc4eec2/work"
+                "LowerDir": "/var/lib/docker/overlay2/a11ea22eb356a6cf613df3f9c3506dbf512d4cbd4edb890e9f1b3c9468ac28c7-init/diff:/var/lib/docker/overlay2/8c779dc467dd1e35b0172a9f4cf91d2ab7b92aaa1c14792a687819d97b4ab010/diff:/var/lib/docker/overlay2/e77727f0d2743e6c7c9bf7c7f499a2a5dd36af1f4d638035ab823d74285bfe52/diff:/var/lib/docker/overlay2/56aa85f986e954ccc92990b907ce3cb78f4f0104a5b30bdddd188605d93e5cd7/diff:/var/lib/docker/overlay2/4a86bc74154652725399ba952b3e99edf2eb250798387ee37e6bfb6cc099a895/diff:/var/lib/docker/overlay2/b487467753497a2deee06a721fce22dd350c5d4731de02373976f18d30d19cc0/diff:/var/lib/docker/overlay2/0e401087ef6d774ceda6c0d919c65a5d66855d65f177523a0eecc8244b878d65/diff:/var/lib/docker/overlay2/6e61e566bc57d9de9a72d14a07eb8aa280fac0e0adf5a123fa62ef7db2e10d67/diff:/var/lib/docker/overlay2/46f92f1b6ceadd4a3021d061298245262781b6cecf9e6c4eeecc47e4aecf33b1/diff",
+                "MergedDir": "/var/lib/docker/overlay2/a11ea22eb356a6cf613df3f9c3506dbf512d4cbd4edb890e9f1b3c9468ac28c7/merged",
+                "UpperDir": "/var/lib/docker/overlay2/a11ea22eb356a6cf613df3f9c3506dbf512d4cbd4edb890e9f1b3c9468ac28c7/diff",
+                "WorkDir": "/var/lib/docker/overlay2/a11ea22eb356a6cf613df3f9c3506dbf512d4cbd4edb890e9f1b3c9468ac28c7/work"
             },
             "Name": "overlay2"
         },
         "Mounts": [
-            {
-                "Type": "volume",
-                "Name": "portainer_portainer_data",
-                "Source": "/var/lib/docker/volumes/portainer_portainer_data/_data",
-                "Destination": "/data",
-                "Driver": "local",
-                "Mode": "z",
-                "RW": true,
-                "Propagation": ""
-            },
             {
                 "Type": "bind",
                 "Source": "/var/run/docker.sock",
@@ -166,10 +162,20 @@
                 "Mode": "rw",
                 "RW": true,
                 "Propagation": "rprivate"
+            },
+            {
+                "Type": "volume",
+                "Name": "dashboard_portainer_data",
+                "Source": "/var/lib/docker/volumes/dashboard_portainer_data/_data",
+                "Destination": "/data",
+                "Driver": "local",
+                "Mode": "z",
+                "RW": true,
+                "Propagation": ""
             }
         ],
         "Config": {
-            "Hostname": "f8cad916dd1a",
+            "Hostname": "6a49d2dc486d",
             "Domainname": "",
             "User": "",
             "AttachStdin": false,
@@ -197,14 +203,14 @@
             ],
             "OnBuild": null,
             "Labels": {
-                "com.docker.compose.config-hash": "98799474dcceca6091c45c05898a3783f09ea41d9263fc4d1d17d51d39723294",
+                "com.docker.compose.config-hash": "cf6df7dbc59dedca23d8ac49b670b521464c5b85229a74ea220b2f307931ec8a",
                 "com.docker.compose.container-number": "1",
                 "com.docker.compose.depends_on": "",
                 "com.docker.compose.image": "sha256:2622931a6f420d9c80c84f6b17cce4b0fb5a0d67b23eb2baf44eae774ff5a9ac",
                 "com.docker.compose.oneoff": "False",
-                "com.docker.compose.project": "portainer",
-                "com.docker.compose.project.config_files": "/srv/docker/portainer/compose.yml",
-                "com.docker.compose.project.working_dir": "/srv/docker/portainer",
+                "com.docker.compose.project": "dashboard",
+                "com.docker.compose.project.config_files": "/srv/docker/dashboard/docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/srv/docker/dashboard",
                 "com.docker.compose.service": "portainer",
                 "com.docker.compose.version": "2.26.1",
                 "com.docker.desktop.extension.api.version": ">= 0.2.2",
@@ -221,8 +227,8 @@
         },
         "NetworkSettings": {
             "Bridge": "",
-            "SandboxID": "b1f8499acad0743d79cf9801ad27af8060627956a47ccb703b1a3d803578647f",
-            "SandboxKey": "/var/run/docker/netns/b1f8499acad0",
+            "SandboxID": "e32ad0717b6030a0c066aae18908b36971096806860ce1bf8e81f90229fd8b82",
+            "SandboxKey": "/var/run/docker/netns/e32ad0717b60",
             "Ports": {
                 "8000/tcp": null,
                 "9000/tcp": [
@@ -235,7 +241,16 @@
                         "HostPort": "9000"
                     }
                 ],
-                "9443/tcp": null
+                "9443/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "9443"
+                    },
+                    {
+                        "HostIp": "::",
+                        "HostPort": "9443"
+                    }
+                ]
             },
             "HairpinMode": false,
             "LinkLocalIPv6Address": "",
@@ -251,18 +266,18 @@
             "IPv6Gateway": "",
             "MacAddress": "",
             "Networks": {
-                "portainer_default": {
+                "dashboard_dashboard": {
                     "IPAMConfig": null,
                     "Links": null,
                     "Aliases": [
                         "portainer",
                         "portainer"
                     ],
-                    "MacAddress": "02:42:ac:13:00:02",
-                    "NetworkID": "4ed6233abfd906eb15536f40f20aa736a3ffc01b75f3d6607713692f5411574d",
-                    "EndpointID": "db747ed8602bd19af57324897d39e2e1340814e6484eeec0c95527b954450a3c",
-                    "Gateway": "172.19.0.1",
-                    "IPAddress": "172.19.0.2",
+                    "MacAddress": "02:42:ac:18:00:03",
+                    "NetworkID": "ac0fb87f69c4d97f0c8da218b29df8c2480d7715c7a1e73e20c4e3afa599ac25",
+                    "EndpointID": "5a11902c72cf25acbd80c00bac965e22d6adce2831414e5e91ccab9614f78cfb",
+                    "Gateway": "172.24.0.1",
+                    "IPAddress": "172.24.0.3",
                     "IPPrefixLen": 16,
                     "IPv6Gateway": "",
                     "GlobalIPv6Address": "",
@@ -270,7 +285,7 @@
                     "DriverOpts": null,
                     "DNSNames": [
                         "portainer",
-                        "f8cad916dd1a"
+                        "6a49d2dc486d"
                     ]
                 }
             }
