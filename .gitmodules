@@ -1,0 +1,3 @@
+[submodule "config-privado"]
+	path = config-privado
+	url = https://github.com/ak1ta4/nas-config-privado.git
