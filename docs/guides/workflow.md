@@ -229,27 +229,27 @@ git commit -m "Resolve merge conflict"
 
 ## 🐳 Gestión con Docker Compose
 
-### Usar docker-compose en lugar de comandos docker
+### Usar docker compose en lugar de comandos docker
 
-Si migraste a docker-compose, usa estos comandos:
+Si migraste a `docker compose`, usa estos comandos:
 ```bash
 cd ~/debian-stream-server-nas
 
 # Iniciar todos los servicios
-docker-compose up -d
+docker compose up -d
 
 # Ver logs
-docker-compose logs -f
+docker compose logs -f
 
 # Reiniciar un servicio
-docker-compose restart homepage
+docker compose restart homepage
 
 # Parar todo
-docker-compose down
+docker compose down
 
 # Actualizar imágenes
-docker-compose pull
-docker-compose up -d
+docker compose pull
+docker compose up -d
 ```
 
 ### Añadir nuevo servicio al compose
@@ -273,13 +273,13 @@ nano docker-compose.yml
 
 3. Aplicar cambios:
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 4. Actualizar repo:
 ```bash
 ./scripts/backup/update-configs.sh
 git add docker-compose.yml
-git commit -m "Add nuevo-servicio to docker-compose"
+git commit -m "Add nuevo-servicio to docker compose"
 git push
 ```

@@ -1,5 +1,5 @@
 [Unit]
-Description=Docker Dashboard Stack (Homepage+Glances+Proxy)
+Description=Docker Dashboard Stack (Homepage+Glances+Portainer)
 After=docker.service
 Requires=docker.service
 

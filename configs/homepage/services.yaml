@@ -7,6 +7,10 @@
         href: http://192.168.1.100:61208
         description: Métricas
         icon: glances
+    - Portainer:
+        href: https://192.168.1.100:9443
+        description: Docker management
+        icon: portainer
 
 - Streaming:
     - Sunshine:

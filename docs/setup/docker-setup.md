@@ -3,7 +3,7 @@
 ## Estado versionado
 
 ### Homepage
-- Imagen: `${HOMEPAGE_IMAGE}` (por defecto `ghcr.io/gethomepage/homepage:v1.10.1`)
+- Imagen: `${HOMEPAGE_IMAGE}` (por defecto `ghcr.io/gethomepage/homepage:v0.8.8`)
 - Puerto: 3000
 - Acceso: http://192.168.1.100:3000
 
@@ -14,8 +14,8 @@
 
 ### Portainer
 - Imagen: `${PORTAINER_IMAGE}` (define un tag o digest en `.env`)
-- Puerto: 9000
-- Acceso: http://192.168.1.100:9000
+- Puertos: 9000 y 9443
+- Acceso recomendado: https://192.168.1.100:9443
 
 ## Despliegue actual observado
 
@@ -23,6 +23,7 @@
 - Config de Homepage: `/srv/docker/dashboard/stack/config/`
 - Servicio systemd: `dashboard-stack.service`
 - Compose legacy adicional detectado: `/srv/docker/dashboard/docker-compose.yml`
+- Servicios activos del stack: Homepage, Glances y Portainer
 
 ## Comandos útiles
 

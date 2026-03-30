@@ -20,8 +20,9 @@
 - **Modo**: Web (`-w`)
 
 ### Portainer
-- **Estado**: opcional en la plantilla pública del repo
-- **Nota**: no aparece en el `compose.yaml` desplegado actualmente en `/srv`
+- **Puertos**: 9000 y 9443
+- **Persistencia**: volumen `dashboard_portainer_data`
+- **Estado**: forma parte tanto de la plantilla pública como del stack desplegado en `/srv`
 
 ## Uso
 
@@ -29,34 +30,34 @@ Los puertos quedan enlazados a `SERVER_BIND_IP`. Por defecto el repo solo public
 
 ### Iniciar todos los servicios de la plantilla pública
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 ### Ver logs
 ```bash
-docker-compose logs -f
-docker-compose logs -f homepage
+docker compose logs -f
+docker compose logs -f homepage
 ```
 
 ### Parar servicios
 ```bash
-docker-compose down
+docker compose down
 ```
 
 ### Reiniciar un servicio
 ```bash
-docker-compose restart homepage
+docker compose restart homepage
 ```
 
 ### Actualizar imágenes
 ```bash
-docker-compose pull
-docker-compose up -d
+docker compose pull
+docker compose up -d
 ```
 
 ### Ver estado
 ```bash
-docker-compose ps
+docker compose ps
 ```
 
 ## Runtime actual en el servidor
@@ -67,6 +68,8 @@ El despliegue versionado fuera del repo se gestiona con:
 sudo systemctl status dashboard-stack.service
 sudo systemctl restart dashboard-stack.service
 ```
+
+También existe un compose legacy en `/srv/docker/dashboard/docker-compose.yml`; debe mantenerse alineado solo como referencia/compatibilidad.
 
 ## Configuración de Homepage
 
@@ -88,7 +91,7 @@ Todos los servicios comparten la red `dashboard` (bridge) en la plantilla públi
 
 ## Volúmenes
 
-- `portainer_data`: datos persistentes de Portainer cuando el servicio se habilita en la plantilla pública.
+- `portainer_data`: alias del volumen persistente `dashboard_portainer_data`.
 
 ## Nota operativa
 

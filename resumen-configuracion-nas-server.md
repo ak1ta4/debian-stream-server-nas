@@ -35,7 +35,7 @@
 │  • SSH ──────── Puerto 22                                  │
 │  • Tailscale ── tailscaled.service                         │
 │  • Apache2 ───── Puerto 80/443                             │
-│  • Dashboard ─── Homepage + Glances                        │
+│  • Dashboard ─── Homepage + Glances + Portainer            │
 └─────────────────────────────────────────────────────────────┘
                             │
                     Red Local (192.168.1.x)
@@ -238,6 +238,10 @@ title: Server Dashboard
         href: http://192.168.1.100:61208
         description: Métricas
         icon: glances
+    - Portainer:
+        href: https://192.168.1.100:9443
+        description: Gestión Docker
+        icon: portainer
 
 - Streaming:
     - Sunshine:

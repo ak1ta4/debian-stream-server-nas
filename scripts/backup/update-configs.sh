@@ -32,15 +32,18 @@ detect_local_ipv4() {
   '
 }
 
-sanitize_homepage_services() {
-  local detected_ip="$1"
-  local file="configs/homepage/services.yaml"
+sanitize_text_tree() {
+  local dir="$1"
+  local detected_ip="$2"
 
-  [[ -f "$file" ]] || return 0
+  [[ -d "$dir" ]] || return 0
+  [[ -n "$detected_ip" ]] || return 0
 
-  if [[ -n "$detected_ip" ]]; then
-    sed -i "s#${detected_ip}#${PUBLIC_SERVER_IP}#g" "$file"
-  fi
+  find "$dir" -type f \
+    \( -name '*.yaml' -o -name '*.yml' -o -name '*.js' -o -name '*.json' -o -name '*.txt' \) \
+    -print0 | while IFS= read -r -d '' file; do
+      sed -i "s#${detected_ip}#${PUBLIC_SERVER_IP}#g" "$file"
+    done
 }
 
 LOCAL_SERVER_IP="$(detect_local_ipv4 || true)"
@@ -78,7 +81,7 @@ warn "Se omiten sunshine.conf y sunshine_state.json del repo público; guárdalo
 echo "  - Homepage"
 if [[ -d /srv/docker/dashboard/stack/config ]]; then
   cp -r /srv/docker/dashboard/stack/config/. configs/homepage/
-  sanitize_homepage_services "$LOCAL_SERVER_IP"
+  sanitize_text_tree "configs/homepage" "$LOCAL_SERVER_IP"
   rm -rf configs/homepage/logs 2>/dev/null || true
 else
   warn "No encontrada la config de Homepage en /srv/docker/dashboard/stack/config"
@@ -88,11 +91,11 @@ fi
 echo "  - Docker containers"
 if command -v docker >/dev/null 2>&1; then
   if docker info >/dev/null 2>&1; then
-    docker ps --format "{{.Names}}" | while IFS= read -r container; do
-      [[ -n "$container" ]] || continue
+    for container in homepage glances portainer; do
       mkdir -p "configs/docker/$container"
       docker inspect "$container" > "configs/docker/$container/inspect.json" || warn "No se pudo inspeccionar $container"
     done
+    sanitize_text_tree "configs/docker" "$LOCAL_SERVER_IP"
   else
     warn "docker está instalado pero el daemon no responde; no se actualizan inspect.json"
   fi

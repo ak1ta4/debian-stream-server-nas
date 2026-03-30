@@ -13,5 +13,4 @@
 - Desktop: XFCE
 - Streaming: Sunshine 2025.924
 - Servicios base: SSH, Samba, Tailscale, Apache2
-- Dashboard versionado: Homepage + Glances
-- Portainer: opcional en la plantilla pública, no en el stack desplegado actual
+- Dashboard: Homepage + Glances + Portainer

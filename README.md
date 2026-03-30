@@ -19,18 +19,17 @@ Documentación completa y configuraciones de mi servidor Debian 13 (Trixie) con 
 ## 🎯 Servicios
 
 - **Streaming**: Sunshine 2025.924
-- **Dashboard versionado**: Homepage + Glances
-- **Portainer**: opcional en la plantilla pública de compose
+- **Dashboard**: Homepage + Glances + Portainer
 - **Sistema**: SSH, Samba, Tailscale, Apache2 y LightDM
 - **SSH**: Puerto 22
 
 ## 🐳 Docker Compose
 
-Todos los servicios del dashboard se gestionan con docker-compose:
+Todos los servicios del dashboard se gestionan con `docker compose`:
 ```bash
-docker-compose up -d      # Iniciar servicios
-docker-compose logs -f    # Ver logs
-docker-compose ps         # Estado
+docker compose up -d      # Iniciar servicios
+docker compose logs -f    # Ver logs
+docker compose ps         # Estado
 ```
 
 ## 📁 Estructura
@@ -56,7 +55,7 @@ docker-compose ps         # Estado
 ```bash
 cd ~/debian-stream-server-nas
 # Opcional: crea .env desde .env.example si quieres exponer servicios en LAN
-docker-compose up -d
+docker compose up -d
 ```
 
 ### Actualizar configuraciones después de cambios
@@ -81,7 +80,7 @@ IPs de ejemplo del repo público. Los valores reales deben vivir fuera de este r
 
 - **Homepage**: http://192.168.1.100:3000
 - **Glances**: http://192.168.1.100:61208
-- **Portainer**: http://192.168.1.100:9000
+- **Portainer**: https://192.168.1.100:9443
 - **SSH**: `ssh ak1t4@192.168.1.100`
 
 ## 🔧 Scripts Disponibles

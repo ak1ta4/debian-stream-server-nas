@@ -1,6 +1,6 @@
 services:
   homepage:
-    image: ${HOMEPAGE_IMAGE:-ghcr.io/gethomepage/homepage:v1.10.1}
+    image: ${HOMEPAGE_IMAGE:-ghcr.io/gethomepage/homepage:v0.8.8}
     container_name: homepage
     ports:
       - "${SERVER_BIND_IP:-127.0.0.1}:3000:3000"
@@ -32,7 +32,6 @@ services:
     networks:
       - dashboard
 
-  # Opcional: no forma parte del stack desplegado actualmente en /srv/docker/dashboard/stack.
   portainer:
     image: ${PORTAINER_IMAGE:-portainer/portainer-ce:latest}
     container_name: portainer
@@ -54,3 +53,4 @@ networks:
 
 volumes:
   portainer_data:
+    name: ${PORTAINER_VOLUME_NAME:-dashboard_portainer_data}
