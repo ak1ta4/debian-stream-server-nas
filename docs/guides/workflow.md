@@ -9,15 +9,17 @@ Haz los cambios que necesites en tu servidor (instalar paquetes, modificar confi
 
 ### 2. Actualizar configuraciones
 ```bash
-cd ~/debian-server-docs
+cd ~/debian-stream-server-nas
 ./scripts/backup/update-configs.sh
 ```
 
 Este script automáticamente copia:
-- Configuraciones de Sunshine
+- Configuraciones públicas de Sunshine
 - Estado de contenedores Docker
-- Configs del sistema (SSH, systemd)
+- Inventario de systemd
 - Autostart de XFCE
+
+Los archivos sensibles como `sunshine_state.json`, `sshd_config` y snapshots de red deben mantenerse fuera del repo público.
 
 ### 3. Verificar cambios
 ```bash
@@ -59,7 +61,7 @@ git push
 
 Genera un snapshot completo del sistema cada mes:
 ```bash
-cd ~/debian-server-docs
+cd ~/debian-stream-server-nas
 ./scripts/monitoring/system-inventory.sh
 git add hardware/snapshots/
 git commit -m "Monthly snapshot $(date +%Y-%m)"
@@ -76,7 +78,7 @@ git push
 docker run -d --name nuevo-servicio ...
 
 # 2. Actualizar configs
-cd ~/debian-server-docs
+cd ~/debian-stream-server-nas
 ./scripts/backup/update-configs.sh
 
 # 3. Crear documentación
@@ -97,7 +99,7 @@ sudo apt update && sudo apt upgrade sunshine
 pkill sunshine
 
 # 3. Actualizar configs y docs
-cd ~/debian-server-docs
+cd ~/debian-stream-server-nas
 ./scripts/backup/update-configs.sh
 nano docs/setup/sunshine-setup.md  # Actualizar versión
 
@@ -116,7 +118,7 @@ sudo nano /etc/ssh/sshd_config
 sudo systemctl restart ssh
 
 # 3. Actualizar repo
-cd ~/debian-server-docs
+cd ~/debian-stream-server-nas
 ./scripts/backup/update-configs.sh
 
 # 4. Documentar cambio
@@ -231,7 +233,7 @@ git commit -m "Resolve merge conflict"
 
 Si migraste a docker-compose, usa estos comandos:
 ```bash
-cd ~/debian-server-docs
+cd ~/debian-stream-server-nas
 
 # Iniciar todos los servicios
 docker-compose up -d

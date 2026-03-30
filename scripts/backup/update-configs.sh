@@ -1,44 +1,125 @@
-#!/bin/bash
-# Script para actualizar todas las configuraciones del servidor
+#!/usr/bin/env bash
+set -euo pipefail
 
-REPO_DIR="$HOME/debian-server-docs"
+# Script para actualizar el repo público con configuraciones no sensibles.
+
+REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$REPO_DIR" || exit 1
+
+warn() { printf "    [WARN] %s\n" "$*"; }
+PUBLIC_SERVER_IP="${PUBLIC_SERVER_IP:-192.168.1.100}"
+
+copy_if_exists() {
+  local src="$1"
+  local dst="$2"
+  if [[ -e "$src" ]]; then
+    cp -f "$src" "$dst"
+  else
+    warn "No encontrado: $src"
+  fi
+}
+
+detect_local_ipv4() {
+  ip route get 1.1.1.1 2>/dev/null | awk '
+    {
+      for (i = 1; i <= NF; i++) {
+        if ($i == "src" && (i + 1) <= NF) {
+          print $(i + 1)
+          exit
+        }
+      }
+    }
+  '
+}
+
+sanitize_homepage_services() {
+  local detected_ip="$1"
+  local file="configs/homepage/services.yaml"
+
+  [[ -f "$file" ]] || return 0
+
+  if [[ -n "$detected_ip" ]]; then
+    sed -i "s#${detected_ip}#${PUBLIC_SERVER_IP}#g" "$file"
+  fi
+}
+
+LOCAL_SERVER_IP="$(detect_local_ipv4 || true)"
 
 echo "🔄 Actualizando configuraciones..."
 
+mkdir -p \
+  configs/docker \
+  configs/homepage \
+  configs/sunshine \
+  configs/system \
+  configs/xfce/autostart
+
 # Docker Compose
 echo "  - docker-compose.yml"
-cp /srv/docker/dashboard/docker-compose.yml ./ 2>/dev/null || echo "    ⚠️  docker-compose.yml no encontrado en /srv/docker/dashboard"
+warn "La plantilla pública docker-compose.yml se mantiene en el repo y no se sobrescribe desde /srv."
 
 # Sunshine
 echo "  - Sunshine"
-cp ~/.config/sunshine/apps.json configs/sunshine/
-cp ~/.config/sunshine/sunshine.conf configs/sunshine/
-cp ~/.config/sunshine/sunshine_state.json configs/sunshine/
+copy_if_exists "$HOME/.config/sunshine/apps.json" configs/sunshine/apps.json
+if command -v dpkg-query >/dev/null 2>&1; then
+  {
+    dpkg-query -W -f='${db:Status-Abbrev} ${Package} ${Version} ${Architecture} ${binary:Summary}\n' sunshine 2>/dev/null || true
+    command -v sunshine 2>/dev/null || true
+  } > configs/sunshine/sunshine-package-info.txt
+fi
+if ps -C sunshine -o user=,pid=,etime=,cmd= >/dev/null 2>&1; then
+  ps -C sunshine -o user=,pid=,etime=,cmd= > configs/sunshine/sunshine-process.txt
+else
+  printf "sunshine no activo\n" > configs/sunshine/sunshine-process.txt
+fi
+warn "Se omiten sunshine.conf y sunshine_state.json del repo público; guárdalos en config-privado."
 
 # Homepage config
 echo "  - Homepage"
-cp -r /srv/docker/dashboard/stack/config/* configs/homepage/ 2>/dev/null
-rm -rf configs/homepage/logs 2>/dev/null
+if [[ -d /srv/docker/dashboard/stack/config ]]; then
+  cp -r /srv/docker/dashboard/stack/config/. configs/homepage/
+  sanitize_homepage_services "$LOCAL_SERVER_IP"
+  rm -rf configs/homepage/logs 2>/dev/null || true
+else
+  warn "No encontrada la config de Homepage en /srv/docker/dashboard/stack/config"
+fi
 
 # Docker containers
 echo "  - Docker containers"
-docker ps --format "{{.Names}}" | while read container; do
-  mkdir -p "configs/docker/$container"
-  docker inspect $container > "configs/docker/$container/inspect.json"
-done
+if command -v docker >/dev/null 2>&1; then
+  if docker info >/dev/null 2>&1; then
+    docker ps --format "{{.Names}}" | while IFS= read -r container; do
+      [[ -n "$container" ]] || continue
+      mkdir -p "configs/docker/$container"
+      docker inspect "$container" > "configs/docker/$container/inspect.json" || warn "No se pudo inspeccionar $container"
+    done
+  else
+    warn "docker está instalado pero el daemon no responde; no se actualizan inspect.json"
+  fi
+else
+  warn "docker no está disponible; no se actualizan inspect.json"
+fi
 
 # Sistema
 echo "  - Sistema"
-sudo cp /etc/ssh/sshd_config configs/system/sshd_config 2>/dev/null
-systemctl list-units --type=service --state=running > configs/system/systemd-running.txt
+if command -v systemctl >/dev/null 2>&1; then
+  systemctl list-units --type=service --state=running > configs/system/systemd-running.txt
+  systemctl list-unit-files --type=service --state=enabled > configs/system/systemd-enabled.txt
+else
+  warn "systemctl no está disponible; no se actualiza el inventario de servicios"
+fi
+warn "Se omiten sshd_config y snapshots de red del repo público; mantenlos en config-privado."
 
 # Autostart
 echo "  - Autostart XFCE"
-cp ~/.config/autostart/*.desktop configs/xfce/autostart/ 2>/dev/null
+if compgen -G "$HOME/.config/autostart/*.desktop" >/dev/null; then
+  cp "$HOME"/.config/autostart/*.desktop configs/xfce/autostart/
+else
+  warn "No hay archivos .desktop en $HOME/.config/autostart"
+fi
 
 # Fecha de actualización
 date > .last-update
 
 echo "✅ Configuraciones actualizadas: $(date)"
-echo "💡 No olvides hacer commit: git add . && git commit -m 'Update configs' && git push"
+echo "💡 Revisa git diff antes de commitear."

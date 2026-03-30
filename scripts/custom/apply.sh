@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
 say() { printf "\n\033[1;32m==>\033[0m %s\n" "$*"; }
 warn() { printf "\n\033[1;33m[WARN]\033[0m %s\n" "$*"; }
@@ -17,13 +17,25 @@ need_root_for() {
 
 # --- Prechecks ---
 need_cmd cp
+need_cmd getent
 need_cmd id
+need_cmd install
 need_cmd grep
+need_cmd loginctl
+need_cmd modprobe
+need_cmd sudo
 need_cmd systemctl
 need_cmd udevadm
 
 USER_NAME="${SUDO_USER:-$(id -un)}"
+USER_UID="$(id -u "$USER_NAME")"
 HOME_DIR="$(getent passwd "$USER_NAME" | cut -d: -f6)"
+SYSTEM_CONFIG_DIR="$REPO_ROOT/configs/system"
+SYSTEMD_USER_CONFIG_DIR="$REPO_ROOT/configs/systemd-user"
+
+run_user_systemctl() {
+  sudo -u "$USER_NAME" env XDG_RUNTIME_DIR="/run/user/$USER_UID" systemctl --user "$@"
+}
 
 [[ -n "$HOME_DIR" ]] || die "No pude determinar HOME de $USER_NAME"
 
@@ -34,8 +46,9 @@ say "Home usuario: $HOME_DIR"
 # --- 1) uinput module load (persist) ---
 say "Instalando config de carga automática de uinput..."
 need_root_for
+[[ -f "$SYSTEM_CONFIG_DIR/uinput.conf" ]] || die "Falta $SYSTEM_CONFIG_DIR/uinput.conf"
 install -d /etc/modules-load.d
-cp -f "$REPO_ROOT/configs/modules-load/uinput.conf" /etc/modules-load.d/uinput.conf
+cp -f "$SYSTEM_CONFIG_DIR/uinput.conf" /etc/modules-load.d/uinput.conf
 chmod 644 /etc/modules-load.d/uinput.conf
 
 say "Cargando módulo uinput ahora (si no está ya)..."
@@ -43,8 +56,9 @@ modprobe uinput || true
 
 # --- 2) udev rule for /dev/uinput ---
 say "Instalando regla udev para /dev/uinput..."
+[[ -f "$SYSTEM_CONFIG_DIR/99-uinput.rules" ]] || die "Falta $SYSTEM_CONFIG_DIR/99-uinput.rules"
 install -d /etc/udev/rules.d
-cp -f "$REPO_ROOT/configs/udev/99-uinput.rules" /etc/udev/rules.d/99-uinput.rules
+cp -f "$SYSTEM_CONFIG_DIR/99-uinput.rules" /etc/udev/rules.d/99-uinput.rules
 chmod 644 /etc/udev/rules.d/99-uinput.rules
 
 say "Recargando reglas udev..."
@@ -61,7 +75,7 @@ else
 fi
 
 # --- 4) LightDM autologin config (optional but requested) ---
-LIGHTDM_CFG_SRC="$REPO_ROOT/configs/lightdm/lightdm.conf"
+LIGHTDM_CFG_SRC="$SYSTEM_CONFIG_DIR/lightdm.conf"
 LIGHTDM_CFG_DST="/etc/lightdm/lightdm.conf"
 
 if [[ -f "$LIGHTDM_CFG_SRC" ]]; then
@@ -74,7 +88,7 @@ if [[ -f "$LIGHTDM_CFG_SRC" ]]; then
     CFG_USER="$(grep '^autologin-user=' "$LIGHTDM_CFG_DST" | head -n1 | cut -d= -f2)"
     if [[ "$CFG_USER" != "$USER_NAME" ]]; then
       warn "LightDM autologin-user está en '$CFG_USER' pero tu usuario actual es '$USER_NAME'."
-      warn "Edita configs/lightdm/lightdm.conf si quieres que autologuee '$USER_NAME'."
+      warn "Edita configs/system/lightdm.conf si quieres que autologuee '$USER_NAME'."
     fi
   fi
 else
@@ -92,12 +106,14 @@ else
 fi
 
 SYSTEMD_USER_DIR="$HOME_DIR/.config/systemd/user"
-SERVICE_SRC="$REPO_ROOT/configs/systemd-user/sunshine.service"
+SERVICE_SRC="$SYSTEMD_USER_CONFIG_DIR/sunshine.service"
 SERVICE_DST="$SYSTEMD_USER_DIR/sunshine.service"
 
-install -d -m 755 "$SYSTEMD_USER_DIR"
+[[ -f "$SERVICE_SRC" ]] || die "Falta $SERVICE_SRC"
+
+install -d -o "$USER_NAME" -g "$USER_NAME" -m 755 "$SYSTEMD_USER_DIR"
 cp -f "$SERVICE_SRC" "$SERVICE_DST"
-chown -R "$USER_NAME:$USER_NAME" "$HOME_DIR/.config"
+chown "$USER_NAME:$USER_NAME" "$SERVICE_DST"
 
 # Si el service hardcodea /usr/bin/sunshine y tu binario está en otro sitio, lo parcheamos
 if [[ -n "$SUNSHINE_BIN" ]]; then
@@ -117,11 +133,11 @@ loginctl enable-linger "$USER_NAME" || warn "No pude activar linger (¿systemd-l
 
 # Habilitar y arrancar servicio de usuario
 say "Habilitando/arrancando sunshine.service para '$USER_NAME'..."
-sudo -u "$USER_NAME" systemctl --user daemon-reload
-sudo -u "$USER_NAME" systemctl --user enable --now sunshine.service || warn "No pude iniciar sunshine.service. Revisa logs."
+run_user_systemctl daemon-reload
+run_user_systemctl enable --now sunshine.service || warn "No pude iniciar sunshine.service. Revisa logs."
 
 say "Estado sunshine.service:"
-sudo -u "$USER_NAME" systemctl --user --no-pager status sunshine.service || true
+run_user_systemctl --no-pager status sunshine.service || true
 
 # --- 6) Final checks ---
 say "Checks finales rápidos:"

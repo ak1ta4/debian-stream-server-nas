@@ -43,11 +43,10 @@
 
 ## 📊 Estado Actual
 
-- **Sunshine**: ✅ Funcionando (v2025.924)
-- **Docker Compose**: ✅ 3 servicios activos
-- **Homepage**: ✅ Puerto 3000
-- **Glances**: ✅ Puerto 61208
-- **Portainer**: ✅ Puerto 9000
+- **Sunshine**: paquete instalado y binario en `/usr/bin/sunshine`
+- **Dashboard**: configuración pública versionada en `docker-compose.yml` y `configs/homepage/`
+- **Servicios base detectados**: Apache2, Samba, SSH, Tailscale y LightDM
+- **Systemd**: inventario público en `configs/system/systemd-*.txt`
 
 ## 🔄 Última actualización
 

@@ -1,6 +1,7 @@
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 002: ID 0408:5425 Quanta Computer, Inc. HP Wide Vision HD Camera
+Bus 001 Device 003: ID 0bda:2852 Realtek Semiconductor Corp. Bluetooth Radio
 Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
 Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 003 Device 002: ID 1997:2466 Shenzhen Riitek Technology Co., Ltd Wireless Receiver
 Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
-Bus 004 Device 004: ID 152d:0583 JMicron Technology Corp. / JMicron USA Technology Corp. JMS583Gen 2 to PCIe Gen3x2 Bridge
-Bus 004 Device 005: ID 152d:0583 JMicron Technology Corp. / JMicron USA Technology Corp. JMS583Gen 2 to PCIe Gen3x2 Bridge

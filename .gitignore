@@ -1,26 +1,67 @@
-# Archivos sensibles
+# ============================================
+# INFORMACIÓN SENSIBLE - NUNCA SUBIR
+# ============================================
+
+# Configuración privada con IPs reales
+config-privado/CONFIG_PRIVADO.md
+CONFIG_PRIVADO.md
+
+# Credenciales y certificados
 configs/sunshine/credentials/*
+configs/sunshine/sunshine.conf
+configs/sunshine/sunshine_state.json
 *.key
 *.pem
 *.crt
+*.env
+.env*
+!.env.example
 private/
 
-# Logs
+# Información de red interna
+configs/network/ip-addr.txt
+configs/network/ip-route.txt
+configs/network/resolv.conf
+
+# Configuraciones del sistema con info sensible
+configs/system/sshd_config
+configs/system/network-interfaces
+
+# ============================================
+# ARCHIVOS TEMPORALES Y LOGS
+# ============================================
+
 *.log
 logs/
+*.tmp
+*.swp
+*~
 
-# Snapshots temporales
+# ============================================
+# SNAPSHOTS Y BACKUPS
+# ============================================
+
 hardware/snapshots/*
 !hardware/snapshots/.gitkeep
+*.backup
+*.bak
 
-# Sistema
+# ============================================
+# ARCHIVOS DE SISTEMA
+# ============================================
+
 .DS_Store
 Thumbs.db
-*~
+desktop.ini
 .vscode/
 .idea/
 
-# Archivos grandes
+# ============================================
+# ARCHIVOS GRANDES
+# ============================================
+
 *.tar
 *.tar.gz
 *.zip
+*.iso
+*.img

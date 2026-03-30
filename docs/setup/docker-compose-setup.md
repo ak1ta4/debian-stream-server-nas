@@ -1,29 +1,33 @@
 # Docker Compose Setup
 
-## Estructura
+## Estructura actual
 
-Todos los servicios del dashboard están definidos en `docker-compose.yml` en la raíz del proyecto.
+- Plantilla pública versionada: `docker-compose.yml` en la raíz del repo.
+- Stack desplegado actualmente en el servidor: `/srv/docker/dashboard/stack/compose.yaml`.
+- Unidad systemd asociada: `dashboard-stack.service`.
 
 ## Servicios
 
 ### Homepage
 - **Puerto**: 3000
-- **Config**: `/srv/docker/dashboard/stack/config` → `/app/config`
-- **Variables**: HOMEPAGE_ALLOWED_HOSTS configurado para acceso local
+- **Config en plantilla pública**: `./configs/homepage` → `/app/config`
+- **Config desplegada en servidor**: `/srv/docker/dashboard/stack/config` → `/app/config`
+- **Variables**: `HOMEPAGE_ALLOWED_HOSTS` se configura desde `.env`
 
 ### Glances
 - **Puerto**: 61208
-- **Acceso**: Sistema host (proc, sys, os-release)
-- **Modo**: Web (-w)
+- **Acceso**: Sistema host (`/proc`, `/sys`, `/etc/os-release`)
+- **Modo**: Web (`-w`)
 
 ### Portainer
-- **Puertos**: 9000 (HTTP), 9443 (HTTPS)
-- **Volumen**: portainer_data (persistente)
-- **Docker socket**: Montado para gestión
+- **Estado**: opcional en la plantilla pública del repo
+- **Nota**: no aparece en el `compose.yaml` desplegado actualmente en `/srv`
 
 ## Uso
 
-### Iniciar todos los servicios
+Los puertos quedan enlazados a `SERVER_BIND_IP`. Por defecto el repo solo publica en `127.0.0.1`; si quieres acceso LAN, ajusta `.env`.
+
+### Iniciar todos los servicios de la plantilla pública
 ```bash
 docker-compose up -d
 ```
@@ -55,41 +59,37 @@ docker-compose up -d
 docker-compose ps
 ```
 
+## Runtime actual en el servidor
+
+El despliegue versionado fuera del repo se gestiona con:
+
+```bash
+sudo systemctl status dashboard-stack.service
+sudo systemctl restart dashboard-stack.service
+```
+
 ## Configuración de Homepage
 
-Los archivos de configuración están en:
-```
-/srv/docker/dashboard/stack/config/
-├── bookmarks.yaml
-├── docker.yaml
-├── services.yaml
-├── settings.yaml
-└── widgets.yaml
+Los archivos públicos versionados están en:
+
+```bash
+configs/homepage/
 ```
 
-Copia de respaldo en: `configs/homepage/`
+La copia desplegada del servidor vive en:
+
+```bash
+/srv/docker/dashboard/stack/config/
+```
 
 ## Red
 
-Todos los servicios comparten la red `dashboard` (bridge).
+Todos los servicios comparten la red `dashboard` (bridge) en la plantilla pública.
 
 ## Volúmenes
 
-- `portainer_data`: Datos persistentes de Portainer
+- `portainer_data`: datos persistentes de Portainer cuando el servicio se habilita en la plantilla pública.
 
-## Migración desde contenedores individuales
+## Nota operativa
 
-Si ya tienes los contenedores corriendo:
-
-1. Parar contenedores actuales:
-```bash
-docker stop homepage glances portainer
-docker rm homepage glances portainer
-```
-
-2. Iniciar con docker-compose:
-```bash
-docker-compose up -d
-```
-
-Los datos de Portainer se preservan porque usa el mismo volumen.
+Durante la actualización del `2026-03-30`, el daemon Docker no estaba accesible, así que los `inspect.json` del repo deben considerarse último snapshot conocido, no estado en vivo.

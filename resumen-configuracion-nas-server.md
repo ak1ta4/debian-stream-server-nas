@@ -1,6 +1,7 @@
 # Configuración del Servidor NAS - ak1t4-server
 
 > **Nota de Seguridad:** Este documento utiliza IPs de ejemplo (192.168.1.100). Para las IPs reales de tu red, consulta el submodule privado `config-privado/` (repositorio privado en GitHub).
+> **Actualizado:** 30 de marzo de 2026. Los datos de hardware y servicios se han alineado con el inventario actual del sistema; las secciones de NAS/discos externos mantienen contexto histórico y deben revalidarse si el almacenamiento externo vuelve a conectarse.
 
 ## 📋 Índice
 1. [Arquitectura del Sistema](#arquitectura-del-sistema)
@@ -20,24 +21,21 @@
 ┌─────────────────────────────────────────────────────────────┐
 │                SERVIDOR NAS (192.168.1.100)                 │
 ├─────────────────────────────────────────────────────────────┤
-│  Almacenamiento:                                            │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      │
-│  │ NVMe 450GB   │  │ Crucial 2TB  │  │ SSD 220GB    │      │
-│  │ Sistema OS   │  │ Principal    │  │ Backup       │      │
-│  │      /       │  │ crucial-2tb  │  │ nas-main     │      │
-│  └──────────────┘  └──────────────┘  └──────────────┘      │
+│  Inventario detectado en esta actualización:                │
 │  ┌──────────────┐                                           │
-│  │ SSD 110GB    │                                           │
-│  │ Snapshots    │                                           │
-│  │ nas-backup   │                                           │
+│  │ NVMe 476.9GB │                                           │
+│  │ Sistema OS   │                                           │
+│  │      /       │                                           │
 │  └──────────────┘                                           │
+│  Discos NAS externos: no detectados en este inventario      │
 │                                                             │
 │  Servicios:                                                 │
+│  • Sunshine ─── systemd --user                             │
 │  • Samba ────── Puerto 445                                 │
-│  • Syncthing ── Puerto 8384, 22000                         │
-│  • Portainer ── Puerto 9000/9443                           │
-│  • Homepage ─── Puerto 3000                                │
-│  • Glances ──── Puerto 61208                               │
+│  • SSH ──────── Puerto 22                                  │
+│  • Tailscale ── tailscaled.service                         │
+│  • Apache2 ───── Puerto 80/443                             │
+│  • Dashboard ─── Homepage + Glances                        │
 └─────────────────────────────────────────────────────────────┘
                             │
                     Red Local (192.168.1.x)
@@ -58,6 +56,8 @@
 ---
 
 ## 🗄️ Configuración de Discos y NAS
+
+> **Nota:** las subsecciones siguientes documentan la configuración NAS histórica del servidor. En el inventario del `2026-03-30` solo se detectó el NVMe del sistema; no se detectaron discos externos montados.
 
 ### Distribución Final de Discos
 
@@ -184,7 +184,7 @@ sudo ufw allow Samba
 
 | | Antes | Después |
 |--|-------|---------|
-| IP del servidor | `192.168.1.50` | `192.168.1.100` |
+| IP del servidor | `192.168.0.100` | `192.168.1.100` |
 | Motivo | Cambio de router | — |
 
 ### Homepage - Solución de validación
@@ -302,11 +302,12 @@ sudo ufw allow 8384/tcp comment 'Syncthing Web UI'
 
 | Servicio | URL | Estado |
 |----------|-----|--------|
-| Homepage | http://192.168.1.100:3000 | ✅ |
-| Portainer | http://192.168.1.100:9000 | ✅ |
-| Glances | http://192.168.1.100:61208 | ✅ |
-| Syncthing | http://192.168.1.100:8384 | ✅ |
-| Samba | `\\192.168.1.100` | ✅ |
+| Sunshine | https://192.168.1.100:47990 | ✅ proceso detectado |
+| Samba | `\\192.168.1.100` | ✅ `smbd` y `nmbd` activos |
+| SSH | `ssh ak1t4@192.168.1.100` | ✅ `ssh.service` activo |
+| Tailscale | red privada | ✅ `tailscaled.service` activo |
+| Apache2 | http://192.168.1.100 | ✅ `apache2.service` activo |
+| Dashboard stack | `/srv/docker/dashboard/stack/compose.yaml` | configurado vía `dashboard-stack.service` |
 
 ---
 
@@ -372,7 +373,7 @@ docker restart <nombre>              # Reiniciar
 
 ---
 
-**Última actualización:** 17 de Febrero de 2026  
-**Usuario:** ak1t4  
-**IP del Servidor:** 192.168.1.100 (ejemplo - ver config-privado/ para IPs reales)  
-**SO:** Debian Trixie
+**Última actualización:** 30 de Marzo de 2026
+**Usuario:** ak1t4
+**IP del Servidor:** 192.168.1.100 (ejemplo - ver config-privado/ para IPs reales)
+**SO:** Debian GNU/Linux 13.3 (Trixie)

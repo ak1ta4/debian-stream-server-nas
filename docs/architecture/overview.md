@@ -5,10 +5,13 @@
 - RAM: 16GB
 - GPU1: NVIDIA RTX 3050 
 - GPU2: AMD Radeon Vega
-- Discos: 476GB NVMe + 223GB SSD + 111GB SSD
+- Inventario detectado en la última actualización: NVMe 476.9GB montado en `/`
 
 ## Software
-- OS: Debian 13 Trixie
+- Hostname: ak1t4-server
+- OS: Debian 13.3 Trixie
 - Desktop: XFCE
 - Streaming: Sunshine 2025.924
-- Containers: Homepage, Glances, Portainer
+- Servicios base: SSH, Samba, Tailscale, Apache2
+- Dashboard versionado: Homepage + Glances
+- Portainer: opcional en la plantilla pública, no en el stack desplegado actual

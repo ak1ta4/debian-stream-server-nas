@@ -8,19 +8,20 @@ Documentación completa y configuraciones de mi servidor Debian 13 (Trixie) con 
 
 ## 📊 Estado del Servidor
 
-- **Sistema**: Debian GNU/Linux 13 (Trixie)
+- **Hostname**: `ak1t4-server`
+- **Sistema**: Debian GNU/Linux 13.3 (Trixie)
 - **Kernel**: 6.12.63+deb13-amd64
 - **Hardware**: Ryzen 5 5600H (6C/12T)
 - **RAM**: 16GB DDR4
 - **GPUs**: NVIDIA RTX 3050 + AMD Radeon Vega
-- **Almacenamiento**: 476GB NVMe + 223GB SSD + 111GB SSD
+- **Almacenamiento detectado en esta actualización**: NVMe 476.9GB montado en `/`
 
 ## 🎯 Servicios
 
 - **Streaming**: Sunshine 2025.924
-- **Dashboard**: Homepage (puerto 3000)
-- **Monitoring**: Glances (puerto 61208)
-- **Docker Management**: Portainer (puerto 9000)
+- **Dashboard versionado**: Homepage + Glances
+- **Portainer**: opcional en la plantilla pública de compose
+- **Sistema**: SSH, Samba, Tailscale, Apache2 y LightDM
 - **SSH**: Puerto 22
 
 ## 🐳 Docker Compose
@@ -44,7 +45,8 @@ docker-compose ps         # Estado
   - `homepage/` - Config de Homepage dashboard
   - `sunshine/` - Config de streaming
   - `docker/` - Inspects de contenedores
-  - `system/` - SSH, systemd, udev
+  - `system/` - systemd, udev, LightDM y modules-load
+  - `systemd-user/` - Servicios de usuario
 - `scripts/` - Scripts de automatización
 - `hardware/` - Información de hardware
 
@@ -52,7 +54,8 @@ docker-compose ps         # Estado
 
 ### Levantar el stack completo
 ```bash
-cd ~/debian-server-docs
+cd ~/debian-stream-server-nas
+# Opcional: crea .env desde .env.example si quieres exponer servicios en LAN
 docker-compose up -d
 ```
 
@@ -74,10 +77,12 @@ git push
 
 ## 🌐 Acceso
 
-- **Homepage**: http://192.168.1.55:3000
-- **Glances**: http://192.168.1.55:61208
-- **Portainer**: http://192.168.1.55:9000
-- **SSH**: `ssh ak1t4@192.168.1.55`
+IPs de ejemplo del repo público. Los valores reales deben vivir fuera de este repositorio.
+
+- **Homepage**: http://192.168.1.100:3000
+- **Glances**: http://192.168.1.100:61208
+- **Portainer**: http://192.168.1.100:9000
+- **SSH**: `ssh ak1t4@192.168.1.100`
 
 ## 🔧 Scripts Disponibles
 

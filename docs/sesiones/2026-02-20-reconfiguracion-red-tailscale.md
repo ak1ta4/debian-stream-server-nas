@@ -1,5 +1,7 @@
 # Sesión 20 Feb 2026 - Reconfiguración de Red y Tailscale
 
+> Nota: este documento público usa IPs de ejemplo. Las IPs reales deben mantenerse en `config-privado/`.
+
 ## 📋 Resumen
 Sesión completa de reconfiguración tras problemas de red causados por Docker. Se eliminó el doble NAT, se configuró Tailscale con conexión directa, se limpiaron y renombraron los discos NAS, y se optimizó Samba para compatibilidad con iOS.
 
@@ -13,7 +15,7 @@ Al intentar configurar OpenVPN en el TP-Link, **el servidor tumbaba completament
 ### Diagnóstico
 ```bash
 ip addr show
-# Servidor tenía IP: 192.168.1.40
+# Servidor tenía IP: 192.168.1.100
 # Pero bridges de Docker creaban conflicto:
 #   - br-ac0fb87f69c4: 172.24.0.1/16
 #   - br-095822f1416e: 172.20.0.1/16
@@ -74,7 +76,7 @@ traceroute -n 8.8.8.8
 
 | Componente | IP Antigua | IP Nueva | Motivo |
 |------------|-----------|----------|--------|
-| Servidor | 192.168.0.10 | 192.168.1.40 | TP-Link ya no gestiona DHCP |
+| Servidor | 192.168.0.100 | 192.168.1.100 | TP-Link ya no gestiona DHCP |
 | Gateway | 192.168.0.1 (TP-Link) | 192.168.1.1 (Movistar) | TP-Link en modo AP |
 
 ### Servicios Actualizados
@@ -82,7 +84,7 @@ traceroute -n 8.8.8.8
 **Homepage Dashboard:**
 ```bash
 nano /srv/docker/dashboard/stack/config/services.yaml
-# Cambiar todas las IPs: 192.168.0.10 → 192.168.1.40
+# Cambiar todas las IPs: 192.168.0.100 → 192.168.1.100
 ```
 
 **Samba:**
@@ -146,7 +148,7 @@ tailscale status
 
 **Después (conexión directa):**
 ```
-100.126.34.53  iphone-15-pro  iOS  active; direct 95.127.180.64:16177, tx 1571584 rx 293336
+100.126.34.53  iphone-15-pro  iOS  active; direct 203.0.113.10:16177, tx 1571584 rx 293336
 ```
 
 ✅ **Conexión directa conseguida**
@@ -312,7 +314,7 @@ systemctl --user start syncthing
 
 ### Configuración
 
-1. **Servidor:** http://192.168.1.40:8384
+1. **Servidor:** http://192.168.1.100:8384
 2. **Conectar dispositivos:**
    - Obtener Device ID del servidor
    - Añadir en PC Windows
@@ -345,7 +347,7 @@ echo "net.ipv4.tcp_wmem=4096 65536 67108864" | sudo tee -a /etc/sysctl.conf
 
 ### Red
 - ✅ Sin doble NAT
-- ✅ IP estática vía DHCP: 192.168.1.40
+- ✅ IP estática vía DHCP: 192.168.1.100
 - ✅ UPnP habilitado en router ISP
 - ✅ Tailscale con conexión directa (sin relay)
 

@@ -1,43 +1,50 @@
 services:
   homepage:
-    image: ghcr.io/gethomepage/homepage:latest
+    image: ${HOMEPAGE_IMAGE:-ghcr.io/gethomepage/homepage:v1.10.1}
     container_name: homepage
     ports:
-      - "3000:3000"
+      - "${SERVER_BIND_IP:-127.0.0.1}:3000:3000"
     volumes:
-      - /srv/docker/dashboard/stack/config:/app/config
+      - ${DASHBOARD_CONFIG_DIR:-./configs/homepage}:/app/config
     environment:
-      - HOMEPAGE_ALLOWED_HOSTS=192.168.1.55:3000,localhost:3000,127.0.0.1:3000
+      - HOMEPAGE_ALLOWED_HOSTS=${HOMEPAGE_ALLOWED_HOSTS:-localhost:3000,127.0.0.1:3000}
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
     networks:
       - dashboard
 
   glances:
-    image: nicolargo/glances:latest
+    image: ${GLANCES_IMAGE:-nicolargo/glances:latest}
     container_name: glances
     ports:
-      - "61208:61208"
+      - "${SERVER_BIND_IP:-127.0.0.1}:61208:61208"
     volumes:
       - /etc/os-release:/host/etc/os-release:ro
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
     environment:
-      - GLANCES_OPT=-w
+      - GLANCES_OPT=${GLANCES_OPT:--w}
     restart: unless-stopped
     pid: host
+    security_opt:
+      - no-new-privileges:true
     networks:
       - dashboard
 
+  # Opcional: no forma parte del stack desplegado actualmente en /srv/docker/dashboard/stack.
   portainer:
-    image: portainer/portainer-ce:latest
+    image: ${PORTAINER_IMAGE:-portainer/portainer-ce:latest}
     container_name: portainer
     ports:
-      - "9000:9000"
-      - "9443:9443"
+      - "${SERVER_BIND_IP:-127.0.0.1}:9000:9000"
+      - "${SERVER_BIND_IP:-127.0.0.1}:9443:9443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
     networks:
       - dashboard
 
